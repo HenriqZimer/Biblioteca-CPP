@@ -1,4 +1,4 @@
-#include "User.h"
+#include "functions/User.h"
 #include <iostream>
 #include <locale.h>
 #include <vector>
@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int main() {
+void menuCadastroUsuarios() {
   setlocale(LC_ALL, "portuguese");
   vector<User> users;
 
@@ -33,8 +33,6 @@ int main() {
       cout << "\x1B[2J\x1B[H";
     }
   } while (option != 3);
-
-  return 0;
 }
 
 // Comando Build g++ main.cpp User.cpp -o output.exe, lembre de estar no diretorio do main.cpp no terminal

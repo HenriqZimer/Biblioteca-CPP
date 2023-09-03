@@ -1,6 +1,8 @@
 #include <iostream>
 #include <locale>
 #include <thread> 
+#include "src/cadastroLivros/cadastroLivros.h"
+#include "src/cadastroUsuarios/CadastroUsuarios.h"
 
 using namespace std;
 
@@ -9,6 +11,7 @@ int main() {
 
   int option;
   do {
+    cout << "\x1B[2J\x1B[H";
     cout << "BIBLIOTECA VH" << endl;
     cout << "-------------------------" << endl;
     cout << "MENU PRINCIPAL" << endl;
@@ -20,8 +23,13 @@ int main() {
     cin >> option;
     cout << "\x1B[2J\x1B[H";
 
+    switch (option) {
+    case 1: menuCadastroLivros();
+      break;
+    case 2: menuCadastroUsuarios();
+      break;
+    }
   } while (option != 4);
-
   return 0;
 }
 

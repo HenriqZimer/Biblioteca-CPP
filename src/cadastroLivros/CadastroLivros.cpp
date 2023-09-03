@@ -1,4 +1,4 @@
-#include "Book.h"
+#include "functions/Book.h"
 #include <iostream>
 #include <locale.h>
 #include <vector>
@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int main() {
+void menuCadastroLivros() {  // Esta é a nova função que substitui a função main
   setlocale(LC_ALL, "portuguese");
   vector<Book> library;
 
@@ -31,7 +31,7 @@ int main() {
       cout << "\x1B[2J\x1B[H";
     }
   } while (option != 3);
-  return 0;
 }
+
 
 // Comando Build cd d: && cd REPOSITÓRIO/Estudos/C++/Biblioteca-CPP/src/cadastroLivros/ && g++ main.cpp Book.cpp -o cadastroLivros.exe
