@@ -18,8 +18,8 @@ int main() {
     cout << "MENU PRINCIPAL" << endl;
     cout << "\n1. Menu Livros\n";
     cout << "2. Menu Usuários\n";
-    cout << "3. Listar Livros\n";
-    cout << "4. Listar Usuários\n";
+    // cout << "3. Listar Livros\n";
+    // cout << "4. Listar Usuários\n";
     cout << "5. Sair\n";
 
     cout << "Escolha uma opção: ";
@@ -34,12 +34,12 @@ int main() {
     case 2:
       userMenu();
       break;
-    case 3:
-      Library::listBooks();
-      break;
-    case 4:
-      Library::listUsers();
-      break;
+    // case 3:
+    //   Library::listBooks();
+    //   break;
+    // case 4:
+    //   Library::listUsers();
+    //   break;
     }
   } while (option != 5);
 
