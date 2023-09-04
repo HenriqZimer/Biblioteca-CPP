@@ -1,7 +1,8 @@
-#pragma once
-#include "src/cadastroLivros/functions/Book.h"
-#include "src/cadastroUsuarios/functions/User.h"
+#ifndef BIBLIOTECA_H
+#define BIBLIOTECA_H
 #include <vector>
+#include "../Livros/functions/Book.h"
+#include "../Usuarios/functions/User.h"
 
 using namespace std;
 
@@ -13,3 +14,5 @@ class Library {
   static void listBooks();
   static void listUsers();
 };
+
+#endif

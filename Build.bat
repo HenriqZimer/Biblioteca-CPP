@@ -1,1 +1,1 @@
-cd d: && cd REPOSITÓRIO/Estudos/C++/Biblioteca-CPP/ && g++ Biblioteca.cpp Library.cpp src/cadastroLivros/CadastroLivros.cpp src/cadastroLivros/functions/Book.cpp src/cadastroUsuarios/CadastroUsuarios.cpp src/cadastroUsuarios/functions/User.cpp -o dist/Biblioteca.exe && ./dist/Biblioteca.exe
+cd d: && cd REPOSITÓRIO/Estudos/C++/Biblioteca-CPP/ && g++ main.cpp src/Biblioteca/Biblioteca.cpp src/Livros/CadastroLivros.cpp src/Livros/functions/Book.cpp src/Usuarios/CadastroUsuarios.cpp src/Usuarios/functions/User.cpp -o dist/Biblioteca.exe && ./dist/Biblioteca.exe

@@ -79,7 +79,7 @@ int main() {
   int option;
   do {
     cout << "MENU REGISTRO DE EMPR�STIMOS DE LIVROS" << endl;
-    cout << "\n1. Registrar Livro\n";
+    cout << "\n1. Cadastrar Livro\n";
     cout << "2. Listar Empr�stimos\n";
     cout << "3. Sair\n";
     cout << "Escolha uma op��o: ";

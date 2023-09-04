@@ -70,7 +70,7 @@ int main() {
   int option;
   do {
     cout << "MENU CADASTRO DE USU�RIOS" << endl;
-    cout << "\n1. Registrar Usuario\n";
+    cout << "\n1. Cadastrar Usuario\n";
     cout << "2. Listar Usu�rios\n";
     cout << "3. Sair\n";
     cout << "Escolha uma op��o: ";

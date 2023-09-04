@@ -1,3 +1,6 @@
+#ifndef USER_H
+#define USER_H
+
 #include <vector>
 #include <string>
 
@@ -10,5 +13,7 @@ struct User {
 };
 
 void printUser(const User& user);
-void registerUser(vector<User>& users);
-void listUsers(const vector<User>& users);
+void registerUser();
+void listUsers();
+
+#endif
