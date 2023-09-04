@@ -28,7 +28,7 @@ void printBook(const Book& book) {
   cout << "\x1B[2J\x1B[H";
 }
 
-void registerBook(vector<Book>& library) {
+void registerBook(vector<Book>& books) {
   Book newBook;
 
   cin.ignore();
@@ -47,18 +47,18 @@ void registerBook(vector<Book>& library) {
   cin >> newBook.copyNumbers;
   cout << "-------------------------" << endl;
 
-  library.push_back(newBook);
+  books.push_back(newBook);
 
   printBook(newBook);
 }
 
-void listBooks(const vector<Book>& library) {
-  if (library.empty()) {
+void listBooks(const vector<Book>& books) {
+  if (books.empty()) {
     cout << "N�o h� livros cadastrados." << endl;
   }
   else {
     cout << "LIVROS CADASTRADOS" << endl;
-    for (const Book& book : library) {
+    for (const Book& book : books) {
       cout << "-------------------------" << endl;
       cout << "T�tulo: " << book.title << endl;
       cout << "Autor: " << book.author << endl;
@@ -71,7 +71,7 @@ void listBooks(const vector<Book>& library) {
 
 int main() {
   setlocale(LC_ALL, "portuguese");
-  vector<Book> library;
+  vector<Book> books;
 
   int option;
   do {
@@ -84,10 +84,10 @@ int main() {
     cout << "\x1B[2J\x1B[H";
 
     if (option == 1) {
-      registerBook(library);
+      registerBook(books);
     }
     else if (option == 2) {
-      listBooks(library);
+      listBooks(books);
       this_thread::sleep_for(chrono::seconds(5));
       cout << "\x1B[2J\x1B[H";
     }

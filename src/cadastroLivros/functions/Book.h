@@ -11,5 +11,5 @@ struct Book {
 };
 
 void printBook(const Book& book);
-void registerBook(vector<Book>& library);
-void listBooks(const vector<Book>& library);
+void registerBook(vector<Book>& books);
+void listBooks(const vector<Book>& books);

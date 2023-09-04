@@ -19,7 +19,7 @@ void printBook(const Book& book) {
   cout << "\x1B[2J\x1B[H";
 }
 
-void registerBook(vector<Book>& library) {
+void registerBook(vector<Book>& books) {
   Book newBook;
 
   cin.ignore();
@@ -38,18 +38,18 @@ void registerBook(vector<Book>& library) {
   cin >> newBook.copyNumbers;
   cout << "-------------------------" << endl;
 
-  library.push_back(newBook);
+  books.push_back(newBook);
 
   printBook(newBook);
 }
 
-void listBooks(const vector<Book>& library) {
-  if (library.empty()) {
+void listBooks(const vector<Book>& books) {
+  if (books.empty()) {
     cout << "Não há livros cadastrados." << endl;
   }
   else {
     cout << "LIVROS CADASTRADOS" << endl;
-    for (const Book& book : library) {
+    for (const Book& book : books) {
       cout << "-------------------------" << endl;
       cout << "Título: " << book.title << endl;
       cout << "Autor: " << book.author << endl;

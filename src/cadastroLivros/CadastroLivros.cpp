@@ -7,9 +7,9 @@
 
 using namespace std;
 
-void menuCadastroLivros() {  // Esta é a nova função que substitui a função main
+void menuCadastroLivros() {
   setlocale(LC_ALL, "portuguese");
-  vector<Book> library;
+  vector<Book> books;
 
   int option;
 
@@ -23,10 +23,10 @@ void menuCadastroLivros() {  // Esta é a nova função que substitui a função
     cout << "\x1B[2J\x1B[H";
 
     if (option == 1) {
-      registerBook(library);
+      registerBook(books);
     }
     else if (option == 2) {
-      listBooks(library);
+      listBooks(books);
       this_thread::sleep_for(chrono::seconds(5));
       cout << "\x1B[2J\x1B[H";
     }
