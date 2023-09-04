@@ -1,3 +1,6 @@
+#ifndef LOAN_H
+#define LOAN_H
+
 #include <vector>
 #include <string>
 
@@ -11,5 +14,7 @@ struct Loan {
 };
 
 void printLoan(const Loan& loan);
-void registerLoan(vector<Loan>& loans);
-void listLoans(const vector<Loan>& loans);
+void registerLoan();
+void listLoans();
+
+#endif

@@ -1,8 +1,9 @@
-#include "Loan.h"
 #include <iostream>
 #include <thread>
 #include <chrono>
 #include <stdlib.h>
+#include "Loan.h"
+#include "../../Biblioteca/Biblioteca.h"
 
 using namespace std;
 
@@ -19,7 +20,7 @@ void printLoan(const Loan& loan) {
   cout << "\x1B[2J\x1B[H";
 }
 
-void registerLoan(std::vector<Loan>& loans) {
+void registerLoan() {
   Loan newLoan;
   int calc;
 
@@ -37,21 +38,20 @@ void registerLoan(std::vector<Loan>& loans) {
 
   calc = newLoan.loanDay + 5;
   newLoan.returnDay = calc;
-
   cout << "-------------------------" << endl;
 
-  loans.push_back(newLoan);
+  Library::loans.push_back(newLoan);
 
   printLoan(newLoan);
 }
 
-void listLoans(const std::vector<Loan>& loans) {
-  if (loans.empty()) {
+void listLoans() {
+  if (Library::loans.empty()) {
     cout << "Não há empréstimos cadastrados." << endl;
   }
   else {
     cout << "EMPRÉSTIMOS CADASTRADOS:" << endl;
-    for (const Loan& loan : loans) {
+    for (const Loan& loan : Library::loans) {
       cout << "-------------------------" << endl;
       cout << "Título: " << loan.title << endl;
       cout << "Autor: " << loan.author << endl;

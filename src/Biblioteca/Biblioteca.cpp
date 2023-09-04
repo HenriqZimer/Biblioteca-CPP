@@ -7,10 +7,11 @@ using namespace std;
 
 vector<Book> Library::books;
 vector<User> Library::users;
+vector<Loan> Library::loans;
 
-void Library::listBooks() {
+void Library::listBooksMain() {
   if (books.empty()) {
-    cout << "Não há livros cadastrados." << endl;
+    cout << "Não há livros cadastrados.11" << endl;
   }
   else {
     cout << "LIVROS CADASTRADOS" << endl;
@@ -27,7 +28,7 @@ void Library::listBooks() {
   cout << "\x1B[2J\x1B[H";
 }
 
-void Library::listUsers() {
+void Library::listUsersMain() {
   if (users.empty()) {
     cout << "Não há usuários cadastrados." << endl;
   }
@@ -43,4 +44,23 @@ void Library::listUsers() {
   }
   this_thread::sleep_for(chrono::seconds(5));
   cout << "\x1B[2J\x1B[H";
+}
+
+void Library::listLoansMain() {
+  if (loans.empty()) {
+    cout << "Não há empréstimos cadastrados." << endl;
+  }
+  else {
+    cout << "EMPRÉSTIMOS CADASTRADOS: " << endl;
+    for (const Loan& loan : loans) {
+      cout << "-------------------------" << endl;
+      cout << "Título: " << loan.title << endl;
+      cout << "Autor: " << loan.author << endl;
+      cout << "Dia do Empréstimo: " << loan.loanDay << endl;
+      cout << "Dia da Devolução: " << loan.returnDay << endl;
+    }
+    cout << "-------------------------" << endl;
+    this_thread::sleep_for(chrono::seconds(3));
+    cout << "\x1B[2J\x1B[H";
+  }
 }
