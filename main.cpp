@@ -11,8 +11,8 @@ int main() {
   setlocale(LC_ALL, "portuguese");
 
   int option;
+  cout << "\x1B[2J\x1B[H";
   do {
-    cout << "\x1B[2J\x1B[H";
     cout << "BIBLIOTECA VH" << endl;
     cout << "-------------------------" << endl;
     cout << "MENU PRINCIPAL" << endl;
@@ -21,7 +21,6 @@ int main() {
     cout << "3. Listar Livros\n";
     cout << "4. Listar Usuários\n";
     cout << "5. Sair\n";
-
 
     cout << "Escolha uma opção: ";
     cin >> option;

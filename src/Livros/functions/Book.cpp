@@ -3,6 +3,7 @@
 #include <chrono>
 #include <stdlib.h>
 #include "Book.h"
+#include "../../Biblioteca/Biblioteca.h"
 
 using namespace std;
 
@@ -19,7 +20,7 @@ void printBook(const Book& book) {
   cout << "\x1B[2J\x1B[H";
 }
 
-void registerBook(vector<Book>& books) {
+void registerBook() {
   Book newBook;
 
   cin.ignore();
@@ -38,18 +39,18 @@ void registerBook(vector<Book>& books) {
   cin >> newBook.copyNumbers;
   cout << "-------------------------" << endl;
 
-  books.push_back(newBook);
+  Library::books.push_back(newBook);
 
   printBook(newBook);
 }
 
-void listBooks(const vector<Book>& books) {
-  if (books.empty()) {
+void listBooks() {
+  if (Library::books.empty()) {
     cout << "Não há livros cadastrados." << endl;
   }
   else {
     cout << "LIVROS CADASTRADOS" << endl;
-    for (const Book& book : books) {
+    for (const Book& book : Library::books) {
       cout << "-------------------------" << endl;
       cout << "Título: " << book.title << endl;
       cout << "Autor: " << book.author << endl;

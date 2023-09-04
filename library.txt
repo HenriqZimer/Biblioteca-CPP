@@ -4,9 +4,3 @@
 - string: Utilizado para manipular strings nos atributos do struct e para as funções de entrada/saída.
 - thread: Utilizado para a função this_thread::sleep_for.
 - chrono: Utilizado para especificar a duração do sono na função sleep_for.
-
-
-cout << "Número de usuários registrados: " << Library::users.size() << endl;
-    if (!Library::users.empty()) {
-      cout << "Último usuário registrado: " << Library::users.back().name << endl;
-    }

@@ -1,4 +1,6 @@
 #include <iostream>
+#include <thread>
+#include <chrono>
 #include "Biblioteca.h"
 
 using namespace std;
@@ -21,6 +23,8 @@ void Library::listBooks() {
     }
     cout << "-------------------------" << endl;
   }
+  this_thread::sleep_for(chrono::seconds(5));
+  cout << "\x1B[2J\x1B[H";
 }
 
 void Library::listUsers() {
@@ -37,4 +41,6 @@ void Library::listUsers() {
     }
     cout << "-------------------------" << endl;
   }
+  this_thread::sleep_for(chrono::seconds(5));
+  cout << "\x1B[2J\x1B[H";
 }

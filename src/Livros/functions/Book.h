@@ -1,3 +1,6 @@
+#ifndef BOOK_H
+#define BOOK_H
+
 #include <vector>
 #include <string>
 
@@ -11,5 +14,7 @@ struct Book {
 };
 
 void printBook(const Book& book);
-void registerBook(vector<Book>& books);
-void listBooks(const vector<Book>& books);
+void registerBook();
+void listBooks();
+
+#endif
