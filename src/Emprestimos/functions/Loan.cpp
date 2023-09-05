@@ -28,6 +28,9 @@ void registerLoan() {
   cout << "EMPRESTANDO LIVRO !!!" << endl;
   cout << "-------------------------" << endl;
   cout << "Digite o título: ";
+  getline(cin, newLoan.user);
+
+  cout << "Digite o título: ";
   getline(cin, newLoan.title);
 
   cout << "Digite o autor: ";
@@ -53,6 +56,7 @@ void listLoans() {
     cout << "EMPRÉSTIMOS CADASTRADOS:" << endl;
     for (const Loan& loan : Library::loans) {
       cout << "-------------------------" << endl;
+      cout << "Usuário: " << loan.title << endl;
       cout << "Título: " << loan.title << endl;
       cout << "Autor: " << loan.author << endl;
       cout << "Dia do empréstimo: " << loan.loanDay << endl;

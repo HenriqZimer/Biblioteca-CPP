@@ -38,10 +38,11 @@ int main() {
       break;
     case 3:
       loanMenu();
-    case 11:
-      Library::listBooksMain();
       break;
     case 10:
+      Library::listBooksMain();
+      break;
+    case 11:
       Library::listUsersMain();
       break;
     case 12:

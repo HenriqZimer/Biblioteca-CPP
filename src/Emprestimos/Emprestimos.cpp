@@ -28,7 +28,6 @@ void loanMenu() {
     cout << "-------------------------" << endl;
     cout << "Escolha uma opção: ";
     cin >> option;
-    cin.ignore();
     cout << "\x1B[2J\x1B[H";
 
     if (option == 1) {
@@ -41,4 +40,3 @@ void loanMenu() {
     }
   } while (option != 3);
 }
-

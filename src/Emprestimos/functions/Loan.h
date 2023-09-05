@@ -7,6 +7,7 @@
 using namespace std;
 
 struct Loan {
+  string user;
   string title;
   string author;
   int loanDay;

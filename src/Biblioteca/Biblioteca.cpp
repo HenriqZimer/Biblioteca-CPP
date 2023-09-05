@@ -54,6 +54,7 @@ void Library::listLoansMain() {
     cout << "EMPRÉSTIMOS CADASTRADOS: " << endl;
     for (const Loan& loan : loans) {
       cout << "-------------------------" << endl;
+      cout << "Usuário: " << loan.user << endl;
       cout << "Título: " << loan.title << endl;
       cout << "Autor: " << loan.author << endl;
       cout << "Dia do Empréstimo: " << loan.loanDay << endl;
