@@ -22,25 +22,48 @@ void printLoan(const Loan& loan) {
 
 void registerLoan() {
   Loan newLoan;
-  int calc;
+  int loanTime;
 
   cin.ignore();
   cout << "EMPRESTANDO LIVRO !!!" << endl;
   cout << "-------------------------" << endl;
-  cout << "Digite o título: ";
+  cout << "Digite o nome do Usuario: ";
   getline(cin, newLoan.user);
+
+  if (!Library::userExists(newLoan.user)) {
+    cout << "Este usuário não está registrado no nosso sistema. Emprestimo não pode ser concluído." << endl;
+    this_thread::sleep_for(chrono::seconds(3));
+    cout << "\x1B[2J\x1B[H";
+    return;
+  }
 
   cout << "Digite o título: ";
   getline(cin, newLoan.title);
 
+  if (!Library::bookExists(newLoan.title)) {
+    cout << "Este livro não está registrado no nosso sistema. Emprestimo não pode ser concluído." << endl;
+    this_thread::sleep_for(chrono::seconds(3));
+    cout << "\x1B[2J\x1B[H";
+    return;
+  }
+
   cout << "Digite o autor: ";
   getline(cin, newLoan.author);
+
+  if (!Library::authorExists(newLoan.author)) {
+    cout << "Este autor não está registrado no nosso sistema. Emprestimo não pode ser concluído." << endl;
+    this_thread::sleep_for(chrono::seconds(3));
+    cout << "\x1B[2J\x1B[H";
+    return;
+  }
 
   cout << "Digite o dia do seu Empréstimo: ";
   cin >> newLoan.loanDay;
 
-  calc = newLoan.loanDay + 5;
-  newLoan.returnDay = calc;
+  cout << "Digite quantidade de dia(s) para seu  Empréstimo: ";
+  cin >> loanTime;
+
+  newLoan.returnDay = newLoan.loanDay + loanTime;
   cout << "-------------------------" << endl;
 
   Library::loans.push_back(newLoan);

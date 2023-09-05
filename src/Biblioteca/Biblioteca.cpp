@@ -65,3 +65,28 @@ void Library::listLoansMain() {
     cout << "\x1B[2J\x1B[H";
   }
 }
+
+bool Library::userExists(const string& name) {
+  for (const User& user : users) {
+    if (user.name == name) {
+      return true;
+    }
+  }
+  return false;
+}
+bool Library::bookExists(const string& title) {
+  for (const Book& book : books) {
+    if (book.title == title) {
+      return true;
+    }
+  }
+  return false;
+}
+bool Library::authorExists(const string& author) {
+  for (const Book& book : books) {
+    if (book.author == author) {
+      return true;
+    }
+  }
+  return false;
+}
