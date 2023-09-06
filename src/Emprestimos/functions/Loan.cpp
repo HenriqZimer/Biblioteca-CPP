@@ -8,18 +8,7 @@
 
 using namespace std;
 
-void printLoan(const Loan& loan) {
-  clear();
-  cout << "Você fez o empréstimo desse Livro: " << endl;
-  cout << "-------------------------" << endl;
-  cout << "Usuário: " << loan.user << endl;
-  cout << "Título: " << loan.title << endl;
-  cout << "Autor: " << loan.author << endl;
-  cout << "Dia do Empréstimo: " << loan.loanDay << endl;
-  cout << "Dia da Devolução: " << loan.returnDay << endl;
-  cout << "-------------------------" << endl;
-  pauseAndClear();
-}
+
 
 void registerLoan() {
   Loan newLoan;
@@ -83,8 +72,21 @@ void registerLoan() {
   printLoan(newLoan);
 }
 
-void listLoans() {
+void printLoan(const Loan& loan) {
+  clear();
+  cout << "Você fez o empréstimo desse Livro: " << endl;
+  cout << "-------------------------" << endl;
+  cout << "Usuário: " << loan.user << endl;
+  cout << "Título: " << loan.title << endl;
+  cout << "Autor: " << loan.author << endl;
+  cout << "Dia do Empréstimo: " << loan.loanDay << endl;
+  cout << "Dia da Devolução: " << loan.returnDay << endl;
+  cout << "-------------------------" << endl;
+  pauseAndClear();
+}
 
+void listLoans() {
+clear();
   if (Library::loans.empty()) {
     cout << "Não há empréstimos cadastrados." << endl;
   }

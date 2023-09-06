@@ -8,16 +8,6 @@
 
 using namespace std;
 
-void printUser(const User& user) {
-  clear();
-  cout << "Você cadastrou esse usuário: " << endl;
-  cout << "-------------------------" << endl;
-  cout << "Nome: " << user.name << endl;
-  cout << "Numero de Verificação: " << user.verificationNumber << endl;
-  cout << "-------------------------" << endl;
-  pauseAndClear();
-}
-
 void registerUser() {
   User newUser;
 
@@ -37,8 +27,18 @@ void registerUser() {
   printUser(newUser);
 }
 
-void listUsers() {
+void printUser(const User& user) {
+  clear();
+  cout << "Você cadastrou esse usuário: " << endl;
+  cout << "-------------------------" << endl;
+  cout << "Nome: " << user.name << endl;
+  cout << "Numero de Verificação: " << user.verificationNumber << endl;
+  cout << "-------------------------" << endl;
   pauseAndClear();
+}
+
+void listUsers() {
+  clear();
   if (Library::users.empty()) {
     cout << "Não há usuários cadastrados." << endl;
   }
@@ -50,6 +50,6 @@ void listUsers() {
       cout << "Número de verificação: " << user.verificationNumber << endl;
     }
     cout << "-------------------------" << endl;
-
+    pauseAndClear();
   }
 }

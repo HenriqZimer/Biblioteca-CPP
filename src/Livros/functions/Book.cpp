@@ -8,18 +8,6 @@
 
 using namespace std;
 
-void printBook(const Book& book) {
-  clear();
-  cout << "Você cadastrou esse Livro: " << endl;
-  cout << "-------------------------" << endl;
-  cout << "Título: " << book.title << endl;
-  cout << "Autor: " << book.author << endl;
-  cout << "Ano de Publicação: " << book.publicationYear << endl;
-  cout << "Número de Cópias: " << book.copyNumbers << endl;
-  cout << "-------------------------" << endl;
-  pauseAndClear();
-}
-
 void registerBook() {
   Book newBook;
 
@@ -44,8 +32,20 @@ void registerBook() {
   printBook(newBook);
 }
 
-void listBooks() {
+void printBook(const Book& book) {
+  clear();
+  cout << "Você cadastrou esse Livro: " << endl;
+  cout << "-------------------------" << endl;
+  cout << "Título: " << book.title << endl;
+  cout << "Autor: " << book.author << endl;
+  cout << "Ano de Publicação: " << book.publicationYear << endl;
+  cout << "Número de Cópias: " << book.copyNumbers << endl;
+  cout << "-------------------------" << endl;
   pauseAndClear();
+}
+
+void listBooks() {
+  clear();
   if (Library::books.empty()) {
     cout << "Não há livros cadastrados." << endl;
   }
@@ -60,4 +60,5 @@ void listBooks() {
     }
     cout << "-------------------------" << endl;
   }
+  pauseAndClear();
 }
