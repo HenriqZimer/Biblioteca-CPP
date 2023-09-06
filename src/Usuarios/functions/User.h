@@ -8,8 +8,8 @@ using namespace std;
 
 struct User {
   string name;
-  int birthYear;
-  string motherName;
+  int verificationNumber;
+  int numberLoans;
 };
 
 void printUser(const User& user);

@@ -66,6 +66,19 @@ void registerLoan() {
   newLoan.returnDay = newLoan.loanDay + loanTime;
   cout << "-------------------------" << endl;
 
+  for (User& user : Library::users) {
+    if (user.name == newLoan.user) {
+      user.numberLoans++;
+      break;
+    }
+  }
+  for (Book& book : Library::books) {
+    if (book.author == newLoan.author && book.title == newLoan.title) {
+      book.copyNumbers--;
+      break;
+    }
+  }
+
   Library::loans.push_back(newLoan);
 
   printLoan(newLoan);

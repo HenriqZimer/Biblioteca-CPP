@@ -12,8 +12,7 @@ void printUser(const User& user) {
   cout << "Você cadastrou esse usuário: " << endl;
   cout << "-------------------------" << endl;
   cout << "Nome: " << user.name << endl;
-  cout << "Nome da mãe: " << user.motherName << endl;
-  cout << "Ano de nascimento: " << user.birthYear << endl;
+  cout << "Numero de Verificação: " << user.verificationNumber << endl;
   cout << "-------------------------" << endl;
   this_thread::sleep_for(chrono::seconds(3));
   cout << "\x1B[2J\x1B[H";
@@ -27,12 +26,11 @@ void registerUser() {
   cout << "Digite o nome do usuário: ";
   getline(cin, newUser.name);
 
-  cout << "Digite o Nome da mãe: ";
-  getline(cin, newUser.motherName);
-
-  cout << "Digite o ano de nascimento: ";
-  cin >> newUser.birthYear;
+  cout << "Digite o seu número de Verificação: ";
+  cin >> newUser.verificationNumber;
   cout << "-------------------------" << endl;
+
+  newUser.numberLoans = 0;
 
   Library::users.push_back(newUser);
 
@@ -48,8 +46,7 @@ void listUsers() {
     for (const User& user : Library::users) {
       cout << "-------------------------" << endl;
       cout << "Nome: " << user.name << endl;
-      cout << "Nome da mãe: " << user.motherName << endl;
-      cout << "Ano do nascimento: " << user.birthYear << endl;
+      cout << "Número de verificação: " << user.verificationNumber << endl;
     }
     cout << "-------------------------" << endl;
 

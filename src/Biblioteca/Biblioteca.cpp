@@ -11,7 +11,7 @@ vector<Loan> Library::loans;
 
 void Library::listBooksMain() {
   if (books.empty()) {
-    cout << "Não há livros cadastrados.11" << endl;
+    cout << "Não há livros cadastrados." << endl;
   }
   else {
     cout << "LIVROS CADASTRADOS" << endl;
@@ -37,8 +37,8 @@ void Library::listUsersMain() {
     for (const User& user : users) {
       cout << "-------------------------" << endl;
       cout << "Nome: " << user.name << endl;
-      cout << "Nome da mãe: " << user.motherName << endl;
-      cout << "Ano do nascimento: " << user.birthYear << endl;
+      cout << "Número de verificação: " << user.verificationNumber << endl;
+      cout << "Quantidade de livros emprestados: " << user.numberLoans << endl;
     }
     cout << "-------------------------" << endl;
   }

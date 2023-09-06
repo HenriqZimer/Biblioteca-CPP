@@ -21,9 +21,9 @@ void bookMenu() {
     cout << "2. Listar Livros Cadastrados\n";
     cout << "3. Sair\n";
     cout << "-------------------------" << endl;
-    cout << "Número de livros registrados: " << Library::books.size() << endl;
+    cout << "Quantidade de cadastro de livros: " << Library::books.size() << endl;
     if (!Library::books.empty()) {
-      cout << "Último titúlo registrado: " << Library::books.back().title << endl;
+      cout << "Último titúlo cadastrado: " << Library::books.back().title << endl;
     }
     cout << "-------------------------" << endl;
     cout << "Escolha uma Opção: ";

@@ -21,7 +21,7 @@ void loanMenu() {
     cout << "2. Listar Empréstimos\n";
     cout << "3. Sair\n";
     cout << "-------------------------" << endl;
-    cout << "Número de empréstimos registrados: " << Library::loans.size() << endl;
+    cout << "Quantidade de registro de empréstimos: " << Library::loans.size() << endl;
     if (!Library::loans.empty()) {
       cout << "Último empréstimo registrado: " << Library::loans.back().title << endl;
     }
