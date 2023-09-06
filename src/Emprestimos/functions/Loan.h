@@ -16,6 +16,7 @@ struct Loan {
 
 void printLoan(const Loan& loan);
 void registerLoan();
+void bookReturn();
 void listLoans();
 
 #endif

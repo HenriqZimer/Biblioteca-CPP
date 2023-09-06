@@ -3,19 +3,19 @@
 #include <chrono>
 #include <stdlib.h>
 #include "User.h"
+#include "../../Utilities/Includes.h"
 #include "../../Biblioteca/Biblioteca.h"
 
 using namespace std;
 
 void printUser(const User& user) {
-  cout << "\x1B[2J\x1B[H";
+  clear();
   cout << "Você cadastrou esse usuário: " << endl;
   cout << "-------------------------" << endl;
   cout << "Nome: " << user.name << endl;
   cout << "Numero de Verificação: " << user.verificationNumber << endl;
   cout << "-------------------------" << endl;
-  this_thread::sleep_for(chrono::seconds(3));
-  cout << "\x1B[2J\x1B[H";
+  pauseAndClear();
 }
 
 void registerUser() {
@@ -38,6 +38,7 @@ void registerUser() {
 }
 
 void listUsers() {
+  pauseAndClear();
   if (Library::users.empty()) {
     cout << "Não há usuários cadastrados." << endl;
   }

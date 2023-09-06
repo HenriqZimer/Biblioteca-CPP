@@ -6,6 +6,7 @@
 #include <thread>
 #include <chrono>
 #include "functions/User.h"
+#include "../Utilities/Includes.h"
 #include "../Biblioteca/Biblioteca.h"
 
 using namespace std;
@@ -19,7 +20,7 @@ void userMenu() {
     cout << "MENU USUÁRIOS" << endl;
     cout << "\n1. Cadastrar Usuario\n";
     cout << "2. Listar Usuários Cadastrados\n";
-    cout << "3. Sair\n";
+    cout << "0. Sair\n";
     cout << "-------------------------" << endl;
     cout << "Quantidade de cadastro de usuários: " << Library::users.size() << endl;
     if (!Library::users.empty()) {
@@ -29,15 +30,13 @@ void userMenu() {
     cout << "Escolha uma opção: ";
     cin >> option;
     cin.ignore();
-    cout << "\x1B[2J\x1B[H";
+    clear();
 
     if (option == 1) {
       registerUser();
     }
     else if (option == 2) {
       listUsers();
-      this_thread::sleep_for(chrono::seconds(5));
-      cout << "\x1B[2J\x1B[H";
     }
-  } while (option != 3);
+  } while (option != 0);
 }

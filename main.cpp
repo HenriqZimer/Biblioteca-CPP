@@ -1,6 +1,7 @@
 #include <iostream>
 #include <locale>
 #include <thread> 
+#include "src/Utilities/Includes.h"
 #include "src/Livros/Livros.h"
 #include "src/Usuarios/Usuarios.h"
 #include "src/Emprestimos/Emprestimos.h"
@@ -12,7 +13,7 @@ int main() {
   setlocale(LC_ALL, "portuguese");
 
   int option = 0;
-  cout << "\x1B[2J\x1B[H";
+  clear();
   do {
     cout << "BIBLIOTECA VH" << endl;
     cout << "-------------------------" << endl;
@@ -28,7 +29,7 @@ int main() {
     cout << "Escolha uma opção: ";
     cin >> option;
     cin.ignore();
-    cout << "\x1B[2J\x1B[H";
+    clear();
 
     switch (option) {
     case 1:

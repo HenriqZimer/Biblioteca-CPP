@@ -6,6 +6,7 @@
 #include <thread>
 #include <chrono>
 #include "functions/Loan.h"
+#include "../Utilities/Includes.h"
 #include "../Biblioteca/Biblioteca.h"
 
 using namespace std;
@@ -18,8 +19,9 @@ void loanMenu() {
   do {
     cout << "MENU EMPRÉSTIMOS DE LIVROS" << endl;
     cout << "\n1. Empréstimo Livro\n";
-    cout << "2. Listar Empréstimos\n";
-    cout << "3. Sair\n";
+    cout << "2. Devolução de livro\n";
+    cout << "3. Listar Empréstimos\n";
+    cout << "0. Sair\n";
     cout << "-------------------------" << endl;
     cout << "Quantidade de registro de empréstimos: " << Library::loans.size() << endl;
     if (!Library::loans.empty()) {
@@ -28,15 +30,18 @@ void loanMenu() {
     cout << "-------------------------" << endl;
     cout << "Escolha uma opção: ";
     cin >> option;
-    cout << "\x1B[2J\x1B[H";
+    clear();
 
-    if (option == 1) {
+    switch (option) {
+    case 1:
       registerLoan();
-    }
-    else if (option == 2) {
+      break;
+    case 2:
+      bookReturn();
+      break;
+    case 3:
       listLoans();
-      this_thread::sleep_for(chrono::seconds(5));
-      cout << "\x1B[2J\x1B[H";
+      break;
     }
-  } while (option != 3);
+  } while (option != 0);
 }

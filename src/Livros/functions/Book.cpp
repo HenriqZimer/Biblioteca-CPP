@@ -3,12 +3,13 @@
 #include <chrono>
 #include <stdlib.h>
 #include "Book.h"
+#include "../../Utilities/Includes.h"
 #include "../../Biblioteca/Biblioteca.h"
 
 using namespace std;
 
 void printBook(const Book& book) {
-  cout << "\x1B[2J\x1B[H";
+  clear();
   cout << "Você cadastrou esse Livro: " << endl;
   cout << "-------------------------" << endl;
   cout << "Título: " << book.title << endl;
@@ -16,8 +17,7 @@ void printBook(const Book& book) {
   cout << "Ano de Publicação: " << book.publicationYear << endl;
   cout << "Número de Cópias: " << book.copyNumbers << endl;
   cout << "-------------------------" << endl;
-  this_thread::sleep_for(chrono::seconds(3));
-  cout << "\x1B[2J\x1B[H";
+  pauseAndClear();
 }
 
 void registerBook() {
@@ -45,6 +45,7 @@ void registerBook() {
 }
 
 void listBooks() {
+  pauseAndClear();
   if (Library::books.empty()) {
     cout << "Não há livros cadastrados." << endl;
   }

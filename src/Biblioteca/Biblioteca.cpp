@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include "../Utilities/Includes.h"
 #include "Biblioteca.h"
 
 using namespace std;
@@ -24,8 +25,7 @@ void Library::listBooksMain() {
     }
     cout << "-------------------------" << endl;
   }
-  this_thread::sleep_for(chrono::seconds(5));
-  cout << "\x1B[2J\x1B[H";
+  pauseAndClear();
 }
 
 void Library::listUsersMain() {
@@ -42,8 +42,7 @@ void Library::listUsersMain() {
     }
     cout << "-------------------------" << endl;
   }
-  this_thread::sleep_for(chrono::seconds(5));
-  cout << "\x1B[2J\x1B[H";
+  pauseAndClear();
 }
 
 void Library::listLoansMain() {
@@ -61,8 +60,7 @@ void Library::listLoansMain() {
       cout << "Dia da Devolução: " << loan.returnDay << endl;
     }
     cout << "-------------------------" << endl;
-    this_thread::sleep_for(chrono::seconds(3));
-    cout << "\x1B[2J\x1B[H";
+    pauseAndClear(3);
   }
 }
 
