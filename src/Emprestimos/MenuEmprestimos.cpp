@@ -10,16 +10,17 @@ void loanMenu() {
 
   do {
     cout << "MENU EMPRÉSTIMOS DE LIVROS" << endl;
+    printDivider();
     cout << "\n1. Empréstimo Livro\n";
     cout << "2. Devolução de livro\n";
     cout << "3. Listar Empréstimos\n";
     cout << "0. Sair\n";
-    cout << "-------------------------" << endl;
+    printDivider();
     cout << "Quantidade de registro de empréstimos: " << Library::loans.size() << endl;
     if (!Library::loans.empty()) {
       cout << "Último empréstimo registrado: " << Library::loans.back().title << endl;
     }
-    cout << "-------------------------" << endl;
+    printDivider();
     cout << "Escolha uma opção: ";
     cin >> option;
     clear();

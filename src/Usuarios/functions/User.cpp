@@ -6,10 +6,10 @@ using namespace std;
 
 // Funções Reutilizadas ------------------------------
 void printSingleUser(const User& user) {
-  cout << "-------------------------" << endl;
+  printDivider();
   cout << "Usuário: " << user.name << endl;
   cout << "Numero de Verificação: " << user.verificationNumber << endl;
-  cout << "-------------------------" << endl;
+  printDivider();
 }
 // ---------------------------------------------------
 
@@ -18,13 +18,13 @@ void registerUser() {
   User newUser;
 
   cout << "CADASTRANDO USUÁRIO!!!" << endl;
-  cout << "-------------------------" << endl;
+  printDivider();
   cout << "Digite o nome do usuário: ";
   getline(cin, newUser.name);
 
   cout << "Digite um número para sua verificação: ";
   cin >> newUser.verificationNumber;
-  cout << "-------------------------" << endl;
+  printDivider();
 
   newUser.numberLoans = 0;
 

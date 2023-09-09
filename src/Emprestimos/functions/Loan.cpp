@@ -37,13 +37,13 @@ Book* findBook(const string& bookTitle) {
 }
 
 void printSingleLoan(const Loan& loan) {
-  cout << "-------------------------" << endl;
+  printDivider();
   cout << "Usuário: " << loan.user << endl;
   cout << "Título: " << loan.title << endl;
   cout << "Autor: " << loan.author << endl;
   cout << "Dia do Empréstimo: " << loan.loanDay << endl;
   cout << "Dia da Devolução: " << loan.returnDay << endl;
-  cout << "-------------------------" << endl;
+  printDivider();
 }
 
 // ---------------------------------------------------
@@ -55,7 +55,7 @@ void registerLoan() {
 
   cin.ignore();
   cout << "EMPRESTANDO LIVRO !!!" << endl;
-  cout << "-------------------------" << endl;
+  printDivider();
 
   cout << "Digite o nome do Usuario: ";
   getline(cin, newLoan.user);
@@ -82,7 +82,7 @@ void registerLoan() {
   cin >> loanTime;
 
   newLoan.returnDay = newLoan.loanDay + loanTime;
-  cout << "-------------------------" << endl;
+  printDivider();
 
   for (User& user : Library::users) {
     if (user.name == newLoan.user) {
@@ -134,7 +134,7 @@ void bookReturn() {
 
   cin.ignore();
   cout << "DEVOLUÇÃO DE LIVRO" << endl;
-  cout << "-------------------------" << endl;
+  printDivider();
   cout << "Digite o numero de verificação: ";
   getline(cin, userName);
 

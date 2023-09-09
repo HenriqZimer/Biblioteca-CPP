@@ -14,13 +14,13 @@ void Library::listBooksMain() {
   else {
     cout << "LIVROS CADASTRADOS" << endl;
     for (const Book& book : books) {
-      cout << "-------------------------" << endl;
+      printDivider();
       cout << "Título: " << book.title << endl;
       cout << "Autor: " << book.author << endl;
       cout << "Ano de Publicação: " << book.publicationYear << endl;
       cout << "Número de Cópias: " << book.copyNumbers << endl;
     }
-    cout << "-------------------------" << endl;
+    printDivider();
   }
   pauseAndClear();
 }
@@ -32,12 +32,12 @@ void Library::listUsersMain() {
   else {
     cout << "USUÁRIOS CADASTRADOS:" << endl;
     for (const User& user : users) {
-      cout << "-------------------------" << endl;
+      printDivider();
       cout << "Nome: " << user.name << endl;
       cout << "Número de verificação: " << user.verificationNumber << endl;
       cout << "Quantidade de livros emprestados: " << user.numberLoans << endl;
     }
-    cout << "-------------------------" << endl;
+    printDivider();
   }
   pauseAndClear();
 }
@@ -49,14 +49,14 @@ void Library::listLoansMain() {
   else {
     cout << "EMPRÉSTIMOS CADASTRADOS: " << endl;
     for (const Loan& loan : loans) {
-      cout << "-------------------------" << endl;
+      printDivider();
       cout << "Usuário: " << loan.user << endl;
       cout << "Título: " << loan.title << endl;
       cout << "Autor: " << loan.author << endl;
       cout << "Dia do Empréstimo: " << loan.loanDay << endl;
       cout << "Dia da Devolução: " << loan.returnDay << endl;
     }
-    cout << "-------------------------" << endl;
+    printDivider();
     pauseAndClear(3);
   }
 }

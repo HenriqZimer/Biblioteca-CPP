@@ -6,12 +6,13 @@ using namespace std;
 
 // Funções Reutilizadas ------------------------------
 void printSingleBook(const Book& book) {
-  cout << "-------------------------" << endl;
+  cout << "LIVRO ENCONTRADO" << endl;
+  printDivider();
   cout << "Título: " << book.title << endl;
   cout << "Autor: " << book.author << endl;
   cout << "Ano de Publicação: " << book.publicationYear << endl;
   cout << "Número de Cópias: " << book.copyNumbers << endl;
-  cout << "-------------------------" << endl;
+  printDivider();
 }
 
 bool searchByTitle(const Book& book, const string& input) {
@@ -34,7 +35,7 @@ void registerBook() {
 
   cin.ignore();
   cout << "CADASTRANDO LIVRO !!!" << endl;
-  cout << "-------------------------" << endl;
+  printDivider();
   cout << "Digite o título: ";
   getline(cin, newBook.title);
 
@@ -46,7 +47,7 @@ void registerBook() {
 
   cout << "Digite o número de cópias: ";
   cin >> newBook.copyNumbers;
-  cout << "-------------------------" << endl;
+  printDivider();
 
   Library::books.push_back(newBook);
 
@@ -89,17 +90,19 @@ void searchBook() {
   bool (*searchFunction)(const Book&, const string&) = nullptr;
 
   clear();
-  cout << "PESQUISANDO LIVRO" << endl;
-  cout << "-------------------------" << endl;
+  cout << "PESQUISAR LIVRO" << endl;
+  printDivider();
   cout << "1. Pesquisar por título" << endl;
   cout << "2. Pesquisar por autor" << endl;
   cout << "3. Pesquisar por ano de publicação" << endl;
-  cout << "-------------------------" << endl;
+  printDivider();
   cout << "Escolha uma opção: ";
   cin >> choice;
   clear();
 
   cin.ignore();
+  cout << "PESQUISANDO LIVRO" << endl;
+  printDivider();
 
   switch (choice) {
   case 1:
@@ -118,11 +121,13 @@ void searchBook() {
     break;
 
   default:
+    printDivider();
     cout << "Opção inválida." << endl;
     return;
   }
 
   getline(cin, input);
+  clear();
 
   for (const Book& book : Library::books) {
     if (searchFunction(book, input)) {
@@ -133,6 +138,8 @@ void searchBook() {
   }
 
   if (!found) {
+    cout << "PESQUISANDO LIVRO" << endl;
+    printDivider();
     cout << "Livro não encontrado." << endl;
   }
 

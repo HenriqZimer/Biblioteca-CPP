@@ -13,12 +13,12 @@ void userMenu() {
     cout << "\n1. Cadastrar Usuário\n";
     cout << "2. Listar Usuários Cadastrados\n";
     cout << "0. Sair\n";
-    cout << "-------------------------" << endl;
+    printDivider();
     cout << "Quantidade de cadastro de usuários: " << Library::users.size() << endl;
     if (!Library::users.empty()) {
       cout << "Último usuário cadastrado: " << Library::users.back().name << endl;
     }
-    cout << "-------------------------" << endl;
+    printDivider();
     cout << "Escolha uma opção: ";
     cin >> option;
     cin.ignore();

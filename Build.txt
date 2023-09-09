@@ -1,5 +1,5 @@
 PC
-cd d: && cd REPOSITÓRIO/Estudos/C++/Biblioteca-CPP/ && g++ main.cpp src/Biblioteca/Biblioteca.cpp src/Livros/MenuLivros.cpp src/Livros/functions/Book.cpp src/Usuarios/MenuUsuarios.cpp src/Usuarios/functions/User.cpp src/Emprestimos/MenuEmprestimos.cpp src/Emprestimos/functions/Loan.cpp -o dist/Biblioteca.exe && ./dist/Biblioteca.exe
+cd d: && cd REPOSITÓRIO/Estudos/C++/Biblioteca-CPP/ && g++ main.cpp src/Utilities/Includes.cpp src/Biblioteca/Biblioteca.cpp src/Livros/MenuLivros.cpp src/Livros/functions/Book.cpp src/Usuarios/MenuUsuarios.cpp src/Usuarios/functions/User.cpp src/Emprestimos/MenuEmprestimos.cpp src/Emprestimos/functions/Loan.cpp -o dist/Biblioteca.exe && ./dist/Biblioteca.exe
 
 NOTEBOOK
 cd Documents/Estudos/Biblioteca-CPP/ && g++ main.cpp src/Biblioteca/Biblioteca.cpp src/Livros/Livros.cpp src/Livros/functions/Book.cpp src/Usuarios/Usuarios.cpp src/Usuarios/functions/User.cpp src/Emprestimos/Emprestimos.cpp src/Emprestimos/functions/Loan.cpp -o dist/Biblioteca.exe && ./dist/Biblioteca.exe

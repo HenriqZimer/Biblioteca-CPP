@@ -10,16 +10,17 @@ void bookMenu() {
 
   do {
     cout << "MENU LIVROS" << endl;
-    cout << "\n1. Cadastrar Livro\n";
+    printDivider();
+    cout << "1. Cadastrar Livro\n";
     cout << "2. Listar Livros Cadastrados\n";
     cout << "3. Pesquisar Livros Cadastrados\n";
     cout << "0. Sair\n";
-    cout << "-------------------------" << endl;
+    printDivider();
     cout << "Quantidade de cadastro de livros: " << Library::books.size() << endl;
     if (!Library::books.empty()) {
       cout << "Último titúlo cadastrado: " << Library::books.back().title << endl;
     }
-    cout << "-------------------------" << endl;
+    printDivider();
     cout << "Escolha uma Opção: ";
     cin >> option;
     clear();

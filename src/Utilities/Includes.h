@@ -1,8 +1,8 @@
 #ifndef INCLUDES_H
 #define INCLUDES_H
 
-#include <thread>
-#include <chrono>
+#include <thread> // É utilizado para a função this_thread::sleep_for.
+#include <chrono> // É utilizado para especificar a duração do sono na função sleep_for.
 #include <iostream>
 
 using namespace std;
@@ -17,5 +17,7 @@ inline void pause(int seconds = 3) {
 inline void clear() {
   cout << "\x1B[2J\x1B[H";
 }
+
+void printDivider();
 
 #endif 

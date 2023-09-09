@@ -13,7 +13,7 @@ int main() {
   clear();
   do {
     cout << "BIBLIOTECA VH" << endl;
-    cout << "-------------------------" << endl;
+    printDivider();
     cout << "MENU PRINCIPAL" << endl;
     cout << "\n1. Menu Livros\n";
     cout << "2. Menu Usuários\n";
