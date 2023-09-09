@@ -23,8 +23,9 @@ class Library {
   static void listBooksMain();
   static void listUsersMain();
   static void listLoansMain();
+  static void generalStatistics();
   static bool userExists(const string& name);
-  // static bool numberExists(const string& verificationNumber);
+  static bool numberExists(int verificationNumber);
   static bool bookExists(const string& title);
   static bool authorExists(const string& author);
 };

@@ -37,6 +37,7 @@ int main() {
       loanMenu();
       break;
     case 4:
+      Library::generalStatistics();
       break;
     case 5:
       break;

@@ -70,14 +70,14 @@ bool Library::userExists(const string& name) {
   return false;
 }
 
-// bool Library::numberExists(const string& verificationNumber) {
-//   for (const User& user : users) {
-//     if (user.verificationNumber == verificationNumber) {
-//       return true;
-//     }
-//   }
-//   return false;
-// }
+bool Library::numberExists(int verificationNumber) {
+  for (const User& user : users) {
+    if (user.verificationNumber == verificationNumber) {
+      return true;
+    }
+  }
+  return false;
+}
 
 bool Library::bookExists(const string& title) {
   for (const Book& book : books) {
@@ -95,4 +95,17 @@ bool Library::authorExists(const string& author) {
     }
   }
   return false;
+}
+
+void Library::generalStatistics() {
+  clear();
+  cout << "ESTATÍSTICAS GERAIS" << endl;
+  printDivider();
+  cout << "Quantidade de registro de empréstimos: " << Library::loans.size() << endl;
+  cout << "Livro mais Popular: " << Library::loans.size() << endl;
+  cout << "Usuário mais Ativo: " << Library::loans.size() << endl;
+
+  printDivider();
+  pauseAndClear();
+
 }
