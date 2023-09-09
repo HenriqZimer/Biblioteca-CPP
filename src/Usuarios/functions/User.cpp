@@ -9,6 +9,7 @@ void printSingleUser(const User& user) {
   printDivider();
   cout << "Usuário: " << user.name << endl;
   cout << "Numero de Verificação: " << user.verificationNumber << endl;
+  cout << "Quantidade de Empréstimos: " << user.numberLoans << endl;
   printDivider();
 }
 // ---------------------------------------------------

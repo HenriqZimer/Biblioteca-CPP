@@ -6,7 +6,6 @@ using namespace std;
 
 // Funções Reutilizadas ------------------------------
 void printSingleBook(const Book& book) {
-  cout << "LIVRO ENCONTRADO" << endl;
   printDivider();
   cout << "Título: " << book.title << endl;
   cout << "Autor: " << book.author << endl;
@@ -32,7 +31,7 @@ bool searchByYear(const Book& book, const string& input) {
 // Função de Cadastro de Livros ----------------------
 void registerBook() {
   Book newBook;
-
+  
   cin.ignore();
   cout << "CADASTRANDO LIVRO !!!" << endl;
   printDivider();
@@ -71,6 +70,7 @@ void listBooks() {
     cout << "Não há livros cadastrados." << endl;
   }
   else {
+    clear();
     cout << "LIVROS CADASTRADOS" << endl;
     for (const Book& book : Library::books) {
       printSingleBook(book);
@@ -82,7 +82,7 @@ void listBooks() {
 
 // Função de Pesquisar Livros ------------------------
 void searchBook() {
-  int choice;
+  int option;
   string input;
   bool found = false;
 
@@ -90,21 +90,23 @@ void searchBook() {
   bool (*searchFunction)(const Book&, const string&) = nullptr;
 
   clear();
+  do{
   cout << "PESQUISAR LIVRO" << endl;
   printDivider();
   cout << "1. Pesquisar por título" << endl;
   cout << "2. Pesquisar por autor" << endl;
   cout << "3. Pesquisar por ano de publicação" << endl;
+  cout << "0. Sair\n";
   printDivider();
   cout << "Escolha uma opção: ";
-  cin >> choice;
+  cin >> option;
   clear();
 
   cin.ignore();
   cout << "PESQUISANDO LIVRO" << endl;
   printDivider();
 
-  switch (choice) {
+  switch (option) {
   case 1:
     cout << "Digite o título: ";
     searchFunction = searchByTitle;
@@ -142,7 +144,7 @@ void searchBook() {
     printDivider();
     cout << "Livro não encontrado." << endl;
   }
-
+} while (option != 0);
   pauseAndClear();
 }
 // ---------------------------------------------------

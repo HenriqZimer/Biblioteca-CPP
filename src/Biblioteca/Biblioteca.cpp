@@ -57,7 +57,7 @@ void Library::listLoansMain() {
       cout << "Dia da Devolução: " << loan.returnDay << endl;
     }
     printDivider();
-    pauseAndClear(3);
+    pauseAndClear();
   }
 }
 
