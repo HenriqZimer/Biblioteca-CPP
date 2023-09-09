@@ -1,10 +1,10 @@
 #include <iostream>
-#include <locale>
+#include <locale.h>
 #include <thread> 
 #include "src/Utilities/Includes.h"
-#include "src/Livros/Livros.h"
-#include "src/Usuarios/Usuarios.h"
-#include "src/Emprestimos/Emprestimos.h"
+#include "src/Livros/MenuLivros.h"
+#include "src/Usuarios/MenuUsuarios.h"
+#include "src/Emprestimos/MenuEmprestimos.h"
 #include "src/Biblioteca/Biblioteca.h"
 
 using namespace std;

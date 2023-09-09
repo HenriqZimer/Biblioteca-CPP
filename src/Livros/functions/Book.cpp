@@ -8,6 +8,31 @@
 
 using namespace std;
 
+// Funções Reutilizadas ------------------------------
+void printSingleBook(const Book& book) {
+  cout << "-------------------------" << endl;
+  cout << "Título: " << book.title << endl;
+  cout << "Autor: " << book.author << endl;
+  cout << "Ano de Publicação: " << book.publicationYear << endl;
+  cout << "Número de Cópias: " << book.copyNumbers << endl;
+  cout << "-------------------------" << endl;
+}
+
+bool searchByTitle(const Book& book, const string& input) {
+  return book.title == input;
+}
+
+bool searchByAuthor(const Book& book, const string& input) {
+  return book.author == input;
+}
+
+bool searchByYear(const Book& book, const string& input) {
+  int year = stoi(input);
+  return book.publicationYear == year;
+}
+// ---------------------------------------------------
+
+// Função de Cadastro de Livros ----------------------
 void registerBook() {
   Book newBook;
 
@@ -31,19 +56,18 @@ void registerBook() {
 
   printBook(newBook);
 }
+// ---------------------------------------------------
 
+// Função de Imprimir Livro depois do Cadastro -----
 void printBook(const Book& book) {
   clear();
   cout << "Você cadastrou esse Livro: " << endl;
-  cout << "-------------------------" << endl;
-  cout << "Título: " << book.title << endl;
-  cout << "Autor: " << book.author << endl;
-  cout << "Ano de Publicação: " << book.publicationYear << endl;
-  cout << "Número de Cópias: " << book.copyNumbers << endl;
-  cout << "-------------------------" << endl;
+  printSingleBook(book);
   pauseAndClear();
 }
+// ---------------------------------------------------
 
+// Função de Lista os Livros -------------------------
 void listBooks() {
   clear();
   if (Library::books.empty()) {
@@ -52,13 +76,70 @@ void listBooks() {
   else {
     cout << "LIVROS CADASTRADOS" << endl;
     for (const Book& book : Library::books) {
-      cout << "-------------------------" << endl;
-      cout << "Título: " << book.title << endl;
-      cout << "Autor: " << book.author << endl;
-      cout << "Ano de Publicação: " << book.publicationYear << endl;
-      cout << "Número de Cópias: " << book.copyNumbers << endl;
+      printSingleBook(book);
     }
-    cout << "-------------------------" << endl;
   }
   pauseAndClear();
 }
+// ---------------------------------------------------
+
+// Função de Pesquisar Livros ------------------------
+void searchBook() {
+  int choice;
+  string input;
+  bool found = false;
+
+  // Define a function pointer
+  bool (*searchFunction)(const Book&, const string&) = nullptr;
+
+  clear();
+  cout << "PESQUISANDO LIVRO" << endl;
+  cout << "-------------------------" << endl;
+  cout << "1. Pesquisar por título" << endl;
+  cout << "2. Pesquisar por autor" << endl;
+  cout << "3. Pesquisar por ano de publicação" << endl;
+  cout << "-------------------------" << endl;
+  cout << "Escolha uma opção: ";
+  cin >> choice;
+  clear();
+
+  cin.ignore();
+
+  switch (choice) {
+  case 1:
+    cout << "Digite o título: ";
+    searchFunction = searchByTitle;
+    break;
+
+  case 2:
+    cout << "Digite o autor: ";
+    searchFunction = searchByAuthor;
+    break;
+
+  case 3:
+    cout << "Digite o ano de publicação: ";
+    searchFunction = searchByYear;
+    break;
+
+  default:
+    cout << "Opção inválida." << endl;
+    return;
+  }
+
+  getline(cin, input);
+
+  for (const Book& book : Library::books) {
+    if (searchFunction(book, input)) {
+      printSingleBook(book);
+      found = true;
+      break;
+    }
+  }
+
+  if (!found) {
+    cout << "Livro não encontrado." << endl;
+  }
+
+  pauseAndClear();
+}
+// ---------------------------------------------------

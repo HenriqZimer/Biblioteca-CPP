@@ -16,5 +16,6 @@ struct Book {
 void printBook(const Book& book);
 void registerBook();
 void listBooks();
+void searchBook();
 
 #endif

@@ -18,7 +18,7 @@ void userMenu() {
 
   do {
     cout << "MENU USUÁRIOS" << endl;
-    cout << "\n1. Cadastrar Usuario\n";
+    cout << "\n1. Cadastrar Usuário\n";
     cout << "2. Listar Usuários Cadastrados\n";
     cout << "0. Sair\n";
     cout << "-------------------------" << endl;

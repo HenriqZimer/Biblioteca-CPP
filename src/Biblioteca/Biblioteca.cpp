@@ -72,6 +72,16 @@ bool Library::userExists(const string& name) {
   }
   return false;
 }
+
+// bool Library::numberExists(const string& verificationNumber) {
+//   for (const User& user : users) {
+//     if (user.verificationNumber == verificationNumber) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
 bool Library::bookExists(const string& title) {
   for (const Book& book : books) {
     if (book.title == title) {
@@ -80,6 +90,7 @@ bool Library::bookExists(const string& title) {
   }
   return false;
 }
+
 bool Library::authorExists(const string& author) {
   for (const Book& book : books) {
     if (book.author == author) {

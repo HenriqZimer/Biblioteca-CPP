@@ -8,6 +8,16 @@
 
 using namespace std;
 
+// Funções Reutilizadas ------------------------------
+void printSingleUser(const User& user) {
+  cout << "-------------------------" << endl;
+  cout << "Usuário: " << user.name << endl;
+  cout << "Numero de Verificação: " << user.verificationNumber << endl;
+  cout << "-------------------------" << endl;
+}
+// ---------------------------------------------------
+
+// Função de Cadastro de Usuario ---------------------
 void registerUser() {
   User newUser;
 
@@ -16,7 +26,7 @@ void registerUser() {
   cout << "Digite o nome do usuário: ";
   getline(cin, newUser.name);
 
-  cout << "Digite o seu número de Verificação: ";
+  cout << "Digite um número para sua verificação: ";
   cin >> newUser.verificationNumber;
   cout << "-------------------------" << endl;
 
@@ -26,17 +36,18 @@ void registerUser() {
 
   printUser(newUser);
 }
+// ---------------------------------------------------
 
+// Função de Imprimir Usuario depois do Cadastro -----
 void printUser(const User& user) {
   clear();
   cout << "Você cadastrou esse usuário: " << endl;
-  cout << "-------------------------" << endl;
-  cout << "Nome: " << user.name << endl;
-  cout << "Numero de Verificação: " << user.verificationNumber << endl;
-  cout << "-------------------------" << endl;
+  printSingleUser(user);
   pauseAndClear();
 }
+// ---------------------------------------------------
 
+// Função de Lista os Usuarios -----------------------
 void listUsers() {
   clear();
   if (Library::users.empty()) {
@@ -45,11 +56,9 @@ void listUsers() {
   else {
     cout << "USUÁRIOS CADASTRADOS:" << endl;
     for (const User& user : Library::users) {
-      cout << "-------------------------" << endl;
-      cout << "Nome: " << user.name << endl;
-      cout << "Número de verificação: " << user.verificationNumber << endl;
+      printSingleUser(user);
     }
-    cout << "-------------------------" << endl;
-    pauseAndClear();
   }
+  pauseAndClear();
 }
+// ---------------------------------------------------

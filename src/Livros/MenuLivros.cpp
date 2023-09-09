@@ -20,6 +20,7 @@ void bookMenu() {
     cout << "MENU LIVROS" << endl;
     cout << "\n1. Cadastrar Livro\n";
     cout << "2. Listar Livros Cadastrados\n";
+    cout << "3. Pesquisar Livros Cadastrados\n";
     cout << "0. Sair\n";
     cout << "-------------------------" << endl;
     cout << "Quantidade de cadastro de livros: " << Library::books.size() << endl;
@@ -31,11 +32,13 @@ void bookMenu() {
     cin >> option;
     clear();
 
-    if (option == 1) {
-      registerBook();
-    }
-    else if (option == 2) {
-      listBooks();
+    switch (option) {
+    case 1: registerBook();
+      break;
+    case 2: listBooks();
+      break;
+    case 3: searchBook();
+      break;
     }
   } while (option != 0);
 }
