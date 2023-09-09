@@ -1,7 +1,14 @@
 #ifndef BIBLIOTECA_H
 #define BIBLIOTECA_H
 
+#include <iostream>
+#include <locale.h>
+#include <thread>
+#include <stdlib.h>
+
 #include <vector>
+#include <string>
+
 #include "../Livros/functions/Book.h"
 #include "../Usuarios/functions/User.h"
 #include "../Emprestimos/functions/Loan.h"

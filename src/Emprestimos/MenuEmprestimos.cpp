@@ -1,10 +1,3 @@
-#include <iostream>
-#include <locale.h>
-#include <vector>
-#include <string>
-#include <stdlib.h>
-#include <thread>
-#include <chrono>
 #include "functions/Loan.h"
 #include "../Utilities/Includes.h"
 #include "../Biblioteca/Biblioteca.h"
@@ -12,7 +5,6 @@
 using namespace std;
 
 void loanMenu() {
-  setlocale(LC_ALL, "portuguese");
 
   int option;
 

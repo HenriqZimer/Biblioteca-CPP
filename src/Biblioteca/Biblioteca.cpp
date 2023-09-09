@@ -1,6 +1,3 @@
-#include <iostream>
-#include <thread>
-#include <chrono>
 #include "../Utilities/Includes.h"
 #include "Biblioteca.h"
 

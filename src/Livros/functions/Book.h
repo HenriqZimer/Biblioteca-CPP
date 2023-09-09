@@ -1,7 +1,6 @@
 #ifndef BOOK_H
 #define BOOK_H
 
-#include <vector>
 #include <string>
 
 using namespace std;

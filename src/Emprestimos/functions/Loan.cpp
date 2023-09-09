@@ -7,8 +7,8 @@
 #include "../../Biblioteca/Biblioteca.h"
 
 using namespace std;
-// Funções Reutilizadas ------------------------------
 
+// Funções Reutilizadas ------------------------------
 bool checkExistence(bool condition, const string& errorMessage) {
   if (!condition) {
     cout << "Erro: " << errorMessage << endl;

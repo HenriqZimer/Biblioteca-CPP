@@ -1,6 +1,3 @@
-#include <iostream>
-#include <locale.h>
-#include <thread> 
 #include "src/Utilities/Includes.h"
 #include "src/Livros/MenuLivros.h"
 #include "src/Usuarios/MenuUsuarios.h"
@@ -21,8 +18,6 @@ int main() {
     cout << "\n1. Menu Livros\n";
     cout << "2. Menu Usuários\n";
     cout << "3. Menu Empréstimos\n";
-    cout << "4. Listar Livros Usuários\n";
-    cout << "5. Listar Livros\n";
     cout << "6. Estatísticas Geral\n";
     cout << "0. Sair\n";
 

@@ -1,7 +1,6 @@
 #ifndef LOAN_H
 #define LOAN_H
 
-#include <vector>
 #include <string>
 
 using namespace std;
