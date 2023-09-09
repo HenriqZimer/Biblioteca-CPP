@@ -12,7 +12,7 @@ void userMenu() {
     cout << "MENU USUÁRIOS" << endl;
     cout << "\n1. Cadastrar Usuário\n";
     cout << "2. Listar Usuários Cadastrados\n";
-    cout << "0. Sair\n";
+    cout << "3. Sair\n";
     printDivider();
     cout << "Quantidade de cadastro de usuários: " << Library::users.size() << endl;
     if (!Library::users.empty()) {
@@ -24,11 +24,18 @@ void userMenu() {
     cin.ignore();
     clear();
 
-    if (option == 1) {
+    switch (option) {
+    case 1:
       registerUser();
-    }
-    else if (option == 2) {
+      break;
+    case 2:
       listUsers();
+      break;
+    case 3:
+      break;
+    default:
+      invalidOption();
+      break;
     }
-  } while (option != 0);
+  } while (option != 3);
 }

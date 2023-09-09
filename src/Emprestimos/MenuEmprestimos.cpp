@@ -23,6 +23,7 @@ void loanMenu() {
     printDivider();
     cout << "Escolha uma opção: ";
     cin >> option;
+    cin.ignore();
     clear();
 
     switch (option) {
@@ -35,6 +36,11 @@ void loanMenu() {
     case 3:
       listLoans();
       break;
+    case 4:
+      break;
+    default:
+      invalidOption();
+      break;
     }
-  } while (option != 0);
+  } while (option != 4);
 }

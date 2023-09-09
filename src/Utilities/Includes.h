@@ -20,4 +20,6 @@ inline void clear() {
 
 void printDivider();
 
+void invalidOption();
+
 #endif 

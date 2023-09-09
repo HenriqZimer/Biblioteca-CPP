@@ -31,7 +31,7 @@ bool searchByYear(const Book& book, const string& input) {
 // Função de Cadastro de Livros ----------------------
 void registerBook() {
   Book newBook;
-  
+
   cin.ignore();
   cout << "CADASTRANDO LIVRO !!!" << endl;
   printDivider();
@@ -67,7 +67,9 @@ void printBook(const Book& book) {
 void listBooks() {
   clear();
   if (Library::books.empty()) {
+    printDivider();
     cout << "Não há livros cadastrados." << endl;
+    printDivider();
   }
   else {
     clear();
@@ -90,61 +92,59 @@ void searchBook() {
   bool (*searchFunction)(const Book&, const string&) = nullptr;
 
   clear();
-  do{
-  cout << "PESQUISAR LIVRO" << endl;
-  printDivider();
-  cout << "1. Pesquisar por título" << endl;
-  cout << "2. Pesquisar por autor" << endl;
-  cout << "3. Pesquisar por ano de publicação" << endl;
-  cout << "0. Sair\n";
-  printDivider();
-  cout << "Escolha uma opção: ";
-  cin >> option;
-  clear();
-
-  cin.ignore();
-  cout << "PESQUISANDO LIVRO" << endl;
-  printDivider();
-
-  switch (option) {
-  case 1:
-    cout << "Digite o título: ";
-    searchFunction = searchByTitle;
-    break;
-
-  case 2:
-    cout << "Digite o autor: ";
-    searchFunction = searchByAuthor;
-    break;
-
-  case 3:
-    cout << "Digite o ano de publicação: ";
-    searchFunction = searchByYear;
-    break;
-
-  default:
+  do {
+    cout << "PESQUISAR LIVRO" << endl;
     printDivider();
-    cout << "Opção inválida." << endl;
-    return;
-  }
+    cout << "1. Pesquisar por título" << endl;
+    cout << "2. Pesquisar por autor" << endl;
+    cout << "3. Pesquisar por ano de publicação" << endl;
+    cout << "0. Sair\n";
+    printDivider();
+    cout << "Escolha uma opção: ";
+    cin >> option;
+    clear();
 
-  getline(cin, input);
-  clear();
-
-  for (const Book& book : Library::books) {
-    if (searchFunction(book, input)) {
-      printSingleBook(book);
-      found = true;
-      break;
-    }
-  }
-
-  if (!found) {
+    cin.ignore();
     cout << "PESQUISANDO LIVRO" << endl;
     printDivider();
-    cout << "Livro não encontrado." << endl;
-  }
-} while (option != 0);
+
+    switch (option) {
+    case 1:
+      cout << "Digite o título: ";
+      searchFunction = searchByTitle;
+      break;
+
+    case 2:
+      cout << "Digite o autor: ";
+      searchFunction = searchByAuthor;
+      break;
+
+    case 3:
+      cout << "Digite o ano de publicação: ";
+      searchFunction = searchByYear;
+      break;
+
+    default:
+      clear();
+      invalidOption();
+      return;
+    }
+
+    getline(cin, input);
+
+    for (const Book& book : Library::books) {
+      if (searchFunction(book, input)) {
+        printSingleBook(book);
+        found = true;
+        break;
+      }
+    }
+
+    if (!found) {
+      cout << "Livro não encontrado." << endl;
+      pauseAndClear();
+    }
+  } while (option != 4);
   pauseAndClear();
 }
 // ---------------------------------------------------

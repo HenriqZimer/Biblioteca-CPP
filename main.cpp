@@ -18,8 +18,8 @@ int main() {
     cout << "\n1. Menu Livros\n";
     cout << "2. Menu Usuários\n";
     cout << "3. Menu Empréstimos\n";
-    cout << "6. Estatísticas Geral\n";
-    cout << "0. Sair\n";
+    cout << "4. Estatísticas Geral\n";
+    cout << "5. Sair\n";
 
     cout << "Escolha uma opção: ";
     cin >> option;
@@ -39,22 +39,24 @@ int main() {
     case 4:
       break;
     case 5:
-      Library::listBooksMain();
       break;
-    case 6:
-      break;
-    case 10:
-      Library::listBooksMain();
-      break;
-    case 11:
-      Library::listUsersMain();
-      break;
-    case 12:
-      Library::listLoansMain();
+    default:
+      invalidOption();
       break;
     }
-  } while (option != 0);
+  } while (option != 5);
   return 0;
 }
 
 
+// case 6:
+    //   break;
+    // case 10:
+    //   Library::listBooksMain();
+    //   break;
+    // case 11:
+    //   Library::listUsersMain();
+    //   break;
+    // case 12:
+    //   Library::listLoansMain();
+    //   break;

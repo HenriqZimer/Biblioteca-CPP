@@ -14,7 +14,7 @@ void bookMenu() {
     cout << "1. Cadastrar Livro\n";
     cout << "2. Listar Livros Cadastrados\n";
     cout << "3. Pesquisar Livros Cadastrados\n";
-    cout << "0. Sair\n";
+    cout << "4. Sair\n";
     printDivider();
     cout << "Quantidade de cadastro de livros: " << Library::books.size() << endl;
     if (!Library::books.empty()) {
@@ -32,6 +32,11 @@ void bookMenu() {
       break;
     case 3: searchBook();
       break;
+    case 4:
+      break;
+    default:
+      invalidOption();
+      break;
     }
-  } while (option != 0);
+  } while (option != 4);
 }
