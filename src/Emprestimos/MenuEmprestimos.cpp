@@ -14,17 +14,19 @@ void loanMenu() {
     cout << "\n1. Empréstimo Livro\n";
     cout << "2. Devolução de livro\n";
     cout << "3. Listar Empréstimos\n";
-    cout << "0. Sair\n";
+    cout << "4. Listar Empréstimos Usuário\n";
+    cout << "5. Sair\n";
     printDivider();
-    cout << "Quantidade de registro de empréstimos: " << Library::loans.size() << endl;
-    if (!Library::loans.empty()) {
-      cout << "Último empréstimo registrado: " << Library::loans.back().title << endl;
-    }
-    printDivider();
+    // cout << "Quantidade de registro de empréstimos: " << Library::loans.size() << endl;
+    // if (!Library::loans.empty()) {
+    //   cout << "Último empréstimo registrado: " << Library::loans.back().title << endl;
+    // }
+    // printDivider();
     cout << "Escolha uma opção: ";
     cin >> option;
-    cin.ignore();
+    
     clear();
+    cin.ignore();
 
     switch (option) {
     case 1:
@@ -37,10 +39,13 @@ void loanMenu() {
       listLoans();
       break;
     case 4:
+      printUserBooks();
+      break;
+    case 5:
       break;
     default:
       invalidOption();
       break;
     }
-  } while (option != 4);
+  } while (option != 5);
 }

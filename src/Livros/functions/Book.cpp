@@ -14,15 +14,15 @@ void printSingleBook(const Book& book) {
   printDivider();
 }
 
-bool searchByTitle(const Book& book, const string& input) {
+bool searchTitle(const Book& book, const string& input) {
   return book.title == input;
 }
 
-bool searchByAuthor(const Book& book, const string& input) {
+bool searchAuthor(const Book& book, const string& input) {
   return book.author == input;
 }
 
-bool searchByYear(const Book& book, const string& input) {
+bool searchYear(const Book& book, const string& input) {
   int year = stoi(input);
   return book.publicationYear == year;
 }
@@ -86,65 +86,75 @@ void listBooks() {
 void searchBook() {
   int option;
   string input;
-  bool found = false;
+  bool found;
 
   // Define a function pointer
   bool (*searchFunction)(const Book&, const string&) = nullptr;
 
   clear();
   do {
+    found = false;  // Redefina found para false no início de cada iteração
     cout << "PESQUISAR LIVRO" << endl;
     printDivider();
     cout << "1. Pesquisar por título" << endl;
     cout << "2. Pesquisar por autor" << endl;
     cout << "3. Pesquisar por ano de publicação" << endl;
-    cout << "0. Sair\n";
+    cout << "4. Sair\n";
     printDivider();
     cout << "Escolha uma opção: ";
     cin >> option;
     clear();
-
     cin.ignore();
-    cout << "PESQUISANDO LIVRO" << endl;
-    printDivider();
 
     switch (option) {
+
     case 1:
+      cout << "PESQUISANDO LIVRO" << endl;
+      printDivider();
       cout << "Digite o título: ";
-      searchFunction = searchByTitle;
+      searchFunction = searchTitle;
       break;
 
     case 2:
+      cout << "PESQUISANDO LIVRO" << endl;
+      printDivider();
       cout << "Digite o autor: ";
-      searchFunction = searchByAuthor;
+      searchFunction = searchAuthor;
       break;
 
     case 3:
+      cout << "PESQUISANDO LIVRO" << endl;
+      printDivider();
       cout << "Digite o ano de publicação: ";
-      searchFunction = searchByYear;
+      searchFunction = searchYear;
       break;
 
+    case 4:
+      return;
+
     default:
-      clear();
       invalidOption();
       return;
     }
 
     getline(cin, input);
 
-    for (const Book& book : Library::books) {
-      if (searchFunction(book, input)) {
-        printSingleBook(book);
-        found = true;
-        break;
+    if (searchFunction) {
+      for (const Book& book : Library::books) {
+        if (searchFunction(book, input)) {
+          printSingleBook(book);
+          found = true;
+        }
       }
     }
+    pauseAndClear();
 
-    if (!found) {
+    if (!found && option != 4) {
+      printDivider();
       cout << "Livro não encontrado." << endl;
+      printDivider();
       pauseAndClear();
     }
   } while (option != 4);
-  pauseAndClear();
 }
 // ---------------------------------------------------

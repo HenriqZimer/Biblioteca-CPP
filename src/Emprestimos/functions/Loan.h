@@ -17,5 +17,6 @@ void printLoan(const Loan& loan);
 void registerLoan();
 void bookReturn();
 void listLoans();
+void printUserBooks();
 
 #endif

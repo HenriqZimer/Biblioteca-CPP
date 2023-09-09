@@ -1,7 +1,3 @@
-#include <iostream>
-#include <thread>
-#include <chrono>
-#include <stdlib.h>
 #include "Loan.h"
 #include "../../Utilities/Includes.h"
 #include "../../Biblioteca/Biblioteca.h"
@@ -45,7 +41,6 @@ void printSingleLoan(const Loan& loan) {
   cout << "Dia da Devolução: " << loan.returnDay << endl;
   printDivider();
 }
-
 // ---------------------------------------------------
 
 // Função de Cadastro de Emprestimo ------------------
@@ -63,7 +58,6 @@ void registerLoan() {
   User* user = findUser(newLoan.user);
   if (!checkExistence(user, "Usuário não encontrado no sistema.")) return;
 
-
   cout << "Digite o título: ";
   getline(cin, newLoan.title);
 
@@ -72,7 +66,6 @@ void registerLoan() {
 
   cout << "Digite o autor: ";
   getline(cin, newLoan.author);
-
   if (!checkExistence(Library::authorExists(newLoan.author), "Autor não encontrado no sistema.")) return;
 
   cout << "Digite o dia do seu Empréstimo: ";
@@ -87,9 +80,11 @@ void registerLoan() {
   for (User& user : Library::users) {
     if (user.name == newLoan.user) {
       user.numberLoans++;
+      user.booksLoans.push_back(newLoan.title);
       break;
     }
   }
+
   for (Book& book : Library::books) {
     if (book.author == newLoan.author && book.title == newLoan.title) {
       book.copyNumbers--;
@@ -132,11 +127,11 @@ void listLoans() {
 void bookReturn() {
   string userName, bookTitle, bookAuthor, verificationNumber;
 
-  cin.ignore();
+
   cout << "DEVOLUÇÃO DE LIVRO" << endl;
   printDivider();
-  cout << "Digite o numero de verificação: ";
-  getline(cin, userName);
+  // cout << "Digite o numero de verificação: ";
+  // getline(cin, userName);
 
   cout << "Digite o nome do Usuario: ";
   getline(cin, userName);
@@ -155,11 +150,11 @@ void bookReturn() {
     pauseAndClear();
     return;
   }
-  if (!Library::authorExists(bookAuthor)) {
-    cout << "Erro: Autor não encontrado no sistema." << endl;
-    pauseAndClear();
-    return;
-  }
+  // if (!Library::authorExists(bookAuthor)) {
+  //   cout << "Erro: Autor não encontrado no sistema." << endl;
+  //   pauseAndClear();
+  //   return;
+  // }
 
   for (auto i = Library::loans.begin(); i != Library::loans.end(); ++i) {
     if (i->user == userName && i->title == bookTitle) {
@@ -182,3 +177,38 @@ void bookReturn() {
   pauseAndClear();
 }
 // ---------------------------------------------------
+void printUserBooks() {
+  string userName;
+
+  cout << "EMPRÉSTIMOS POR USUÁRIOS" << endl;
+  printDivider();
+  cout << "Digite o nome do Usuario: ";
+  getline(cin, userName);
+
+  User* foundUser = nullptr;
+  for (User& user : Library::users) {
+    if (user.name == userName) {
+      foundUser = &user;
+      break;
+    }
+  }
+
+  if (!foundUser) {
+    cout << "Erro: Usuário não encontrado no sistema." << endl;
+    pauseAndClear();
+    return;
+  }
+
+  if (foundUser->booksLoans.empty()) {
+    cout << "Nenhum livro emprestado." << endl;
+    pauseAndClear();
+    return;
+  }
+
+  cout << "Livros emprestados por " << foundUser->name << ":" << endl;
+
+  for (const string& bookTitle : foundUser->booksLoans) {
+    cout << "- " << bookTitle << endl;
+  }
+}
+
