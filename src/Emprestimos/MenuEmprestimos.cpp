@@ -5,7 +5,6 @@
 using namespace std;
 
 void loanMenu() {
-
   int option;
 
   do {
@@ -19,7 +18,6 @@ void loanMenu() {
     printDivider();
     cout << "Escolha uma opção: ";
     cin >> option;
-    
     clear();
     cin.ignore();
 

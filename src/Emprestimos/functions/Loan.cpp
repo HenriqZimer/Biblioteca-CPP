@@ -42,6 +42,9 @@ void printSingleLoan(const Loan& loan) {
   cout << "Dia da Devolução: " << loan.returnDay << endl;
   printDivider();
 }
+
+regex datePattern(R"(\d{2}\d{2}\d{4})"); // Expressão regular para a data.
+
 // ---------------------------------------------------
 
 // Função de Cadastro de Emprestimo ------------------
@@ -68,7 +71,7 @@ void registerLoan() {
   getline(cin, newLoan.author);
   if (!checkExistence(Library::authorExists(newLoan.author), "Autor não encontrado no sistema.")) return;
 
-  regex datePattern(R"(\d{2}\d{2}\d{4})");
+// Formatador de data em Regex -----------------------
   do {
     cout << "Digite o dia do seu Empréstimo no formato DDMMYYYY: ";
     getline(cin, newLoan.loanDay);
@@ -190,8 +193,27 @@ void bookReturn() {
     return;
   }
 
+  cout << "Digite a data de devolução no formato DDMMYYYY: ";
+  string returnDate;
+  getline(cin, returnDate);
+
+  if (!regex_match(returnDate, datePattern)) {
+    cout << "Formato de data inválido! Tente novamente." << endl;
+    return;
+  }
+
+  int returnDay = stoi(returnDate.substr(0, 2));
+  int returnMonth = stoi(returnDate.substr(2, 2));
+  int returnYear = stoi(returnDate.substr(4, 4));
+  int actualReturnDate = returnDay + returnMonth * 100 + returnYear * 10000;
+
   for (auto i = Library::loans.begin(); i != Library::loans.end(); ++i) {
     if (i->user == userName && i->title == bookTitle) {
+
+      if (actualReturnDate > i->returnDay) {
+        cout << "Aviso: Você está devolvendo este livro após a data de devolução. Por favor, seja pontual na próxima vez." << endl;
+      }
+
       Library::loans.erase(i);
 
       for (User& user : Library::users) {
@@ -200,6 +222,7 @@ void bookReturn() {
           break;
         }
       }
+
       clear();
       cout << "Devolução registrada com sucesso!" << endl;
       pauseAndClear();
@@ -211,6 +234,8 @@ void bookReturn() {
   pauseAndClear();
 }
 // ---------------------------------------------------
+
+// Função de Imprimir Emprestimos por Usuário --------
 void printUserBooks() {
   string userName;
 

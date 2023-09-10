@@ -20,9 +20,9 @@ class Library {
   static vector<User> users;
   static vector<Loan> loans;
 
-  static void listBooksMain();
-  static void listUsersMain();
-  static void listLoansMain();
+  // static void listBooksMain();
+  // static void listUsersMain();
+  // static void listLoansMain();
   static void generalStatistics();
   static bool userExists(const string& name);
   static bool numberExists(int verificationNumber);

@@ -25,6 +25,7 @@ void registerUser() {
 
   cout << "Digite um número para sua verificação: ";
   cin >> newUser.verificationNumber;
+  cin.ignore();
   printDivider();
 
   newUser.numberLoans = 0;
@@ -48,7 +49,7 @@ void printUser(const User& user) {
 void listUsers() {
   clear();
   if (Library::users.empty()) {
-    cout << "Não há usuários cadastrados." << endl;
+    cout << "Erro: Não há usuários cadastrados." << endl;
   }
   else {
     cout << "USUÁRIOS CADASTRADOS:" << endl;

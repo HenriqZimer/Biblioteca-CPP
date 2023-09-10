@@ -68,7 +68,7 @@ void listBooks() {
   clear();
   if (Library::books.empty()) {
     printDivider();
-    cout << "Não há livros cadastrados." << endl;
+    cout << "Erro: Não há livros cadastrados." << endl;
     printDivider();
   }
   else {
@@ -151,7 +151,7 @@ void searchBook() {
 
     if (!found && option != 4) {
       printDivider();
-      cout << "Livro não encontrado." << endl;
+      cout << "Erro: Livro não encontrado." << endl;
       printDivider();
       pauseAndClear();
     }

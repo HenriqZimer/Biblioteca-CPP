@@ -5,7 +5,6 @@
 using namespace std;
 
 void bookMenu() {
-
   int option;
 
   do {
@@ -16,11 +15,6 @@ void bookMenu() {
     cout << "3. Pesquisar Livros Cadastrados\n";
     cout << "4. Sair\n";
     printDivider();
-    // cout << "Quantidade de cadastro de livros: " << Library::books.size() << endl;
-    // if (!Library::books.empty()) {
-    //   cout << "Último titúlo cadastrado: " << Library::books.back().title << endl;
-    // }
-    // printDivider();
     cout << "Escolha uma Opção: ";
     cin >> option;
     clear();
