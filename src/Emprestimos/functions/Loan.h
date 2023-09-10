@@ -9,7 +9,7 @@ struct Loan {
   string user;
   string title;
   string author;
-  string loanDay;
+  int loanDay;
   int returnDay;
 };
 

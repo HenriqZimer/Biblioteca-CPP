@@ -1,4 +1,3 @@
-#include <regex>
 #include "Loan.h"
 #include "../../Utilities/Includes.h"
 #include "../../Biblioteca/Biblioteca.h"
@@ -33,6 +32,22 @@ Book* findBook(const string& bookTitle) {
   return nullptr;
 }
 
+string formatWithLeadingZero(int value) {
+  if (value < 10) {
+    return "0" + to_string(value);
+  }
+  else {
+    return to_string(value);
+  }
+}
+
+// string formatDate(int dateValue) {
+//   string dateStr = to_string(dateValue);
+//   return "Dia: " + formatWithLeadingZero(stoi(dateStr.substr(0, 2))) +
+//     " Mês: " + formatWithLeadingZero(stoi(dateStr.substr(2, 2))) +
+//     " Ano: " + dateStr.substr(4, 4);
+// }
+
 void printSingleLoan(const Loan& loan) {
   printDivider();
   cout << "Usuário: " << loan.user << endl;
@@ -42,15 +57,12 @@ void printSingleLoan(const Loan& loan) {
   cout << "Dia da Devolução: " << loan.returnDay << endl;
   printDivider();
 }
-
-regex datePattern(R"(\d{2}\d{2}\d{4})"); // Expressão regular para a data.
-
 // ---------------------------------------------------
 
 // Função de Cadastro de Emprestimo ------------------
 void registerLoan() {
   Loan newLoan;
-  int loanTime;
+  int loanTime, verificationNumber;
 
   cout << "EMPRESTANDO LIVRO !!!" << endl;
   printDivider();
@@ -60,6 +72,17 @@ void registerLoan() {
 
   User* user = findUser(newLoan.user);
   if (!checkExistence(user, "Usuário não encontrado no sistema.")) return;
+
+  cout << "Digite o numero de verificação: ";
+  cin >> verificationNumber;
+  cin.ignore();
+
+
+  if (!Library::numberExists(verificationNumber)) {
+    cout << "Erro: Usuário não encontrado no sistema." << endl;
+    pauseAndClear();
+    return;
+  }
 
   cout << "Digite o título: ";
   getline(cin, newLoan.title);
@@ -71,25 +94,38 @@ void registerLoan() {
   getline(cin, newLoan.author);
   if (!checkExistence(Library::authorExists(newLoan.author), "Autor não encontrado no sistema.")) return;
 
-// Formatador de data em Regex -----------------------
+  int day, month, year;
+
+  // Solicitar o dia do empréstimo
   do {
-    cout << "Digite o dia do seu Empréstimo no formato DDMMYYYY: ";
-    getline(cin, newLoan.loanDay);
-
-    if (!regex_match(newLoan.loanDay, datePattern)) {
-      cout << "Formato de data inválido! Tente novamente." << endl;
+    cout << "Digite o dia do seu Empréstimo (1-31): ";
+    cin >> day;
+    cin.ignore();
+    if (day < 1 || day > 31) {
+      cout << "Dia inválido! Tente novamente." << endl;
     }
+  } while (day < 1 || day > 31);
 
-  } while (!regex_match(newLoan.loanDay, datePattern));
+  // Solicitar o mês do empréstimo
+  do {
+    cout << "Digite o mês do seu Empréstimo (1-12): ";
+    cin >> month;
+    cin.ignore();
+    if (month < 1 || month > 12) {
+      cout << "Mês inválido! Tente novamente." << endl;
+    }
+  } while (month < 1 || month > 12);
 
-  int day = stoi(newLoan.loanDay.substr(0, 2));
-  int month = stoi(newLoan.loanDay.substr(2, 2));
-  int year = stoi(newLoan.loanDay.substr(4, 4));
+  // Solicitar o ano do empréstimo
+  cout << "Digite o ano do seu Empréstimo: ";
+  cin >> year;
+  cin.ignore();
+  cout << "Você tem 7 dias para devolver seu Empréstimo (clique ENTER para continuar)";
+  cin.ignore();
 
-  cout << "Digite quantidade de dia(s) para seu Empréstimo: ";
-  cin >> loanTime;
+  newLoan.loanDay = stoi(formatWithLeadingZero(day) + formatWithLeadingZero(month) + to_string(year));
 
-  day += loanTime;
+  day += 7;
 
   while (day > 30) {
     month++;
@@ -101,7 +137,7 @@ void registerLoan() {
     }
   }
 
-  newLoan.returnDay = day + month * 100 + year * 10000;
+  newLoan.returnDay = stoi(formatWithLeadingZero(day) + formatWithLeadingZero(month) + to_string(year));
 
   for (User& user : Library::users) {
     if (user.name == newLoan.user) {
@@ -152,24 +188,26 @@ void listLoans() {
 // Função de Devolução dos Emprestimos ---------------
 void bookReturn() {
   string userName, bookTitle, bookAuthor;
-  // int verificationNumber;
+  int verificationNumber;
 
   cout << "DEVOLUÇÃO DE LIVRO" << endl;
   printDivider();
 
-  // cout << "Digite o numero de verificação: ";
-  // getline(cin, verificationNumber);
-
-  if (!Library::numberExists) {
-    cout << "Erro: Usuário não encontrado no sistema." << endl;
-    pauseAndClear();
-    return;
-  }
 
   cout << "Digite o nome do Usuario: ";
   getline(cin, userName);
 
   if (!Library::userExists(userName)) {
+    cout << "Erro: Usuário não encontrado no sistema." << endl;
+    pauseAndClear();
+    return;
+  }
+
+  cout << "Digite o numero de verificação: ";
+  cin >> verificationNumber;
+  cin.ignore();
+
+  if (!Library::numberExists(verificationNumber)) {
     cout << "Erro: Usuário não encontrado no sistema." << endl;
     pauseAndClear();
     return;
@@ -185,7 +223,7 @@ void bookReturn() {
   }
 
   cout << "Digite o Autor do livro sendo devolvido: ";
-  getline(cin, bookTitle);
+  getline(cin, bookAuthor);
 
   if (!Library::authorExists(bookAuthor)) {
     cout << "Erro: Autor não encontrado no sistema." << endl;
@@ -193,25 +231,44 @@ void bookReturn() {
     return;
   }
 
-  cout << "Digite a data de devolução no formato DDMMYYYY: ";
-  string returnDate;
-  getline(cin, returnDate);
+  int returnDay, returnMonth, returnYear;
 
-  if (!regex_match(returnDate, datePattern)) {
-    cout << "Formato de data inválido! Tente novamente." << endl;
-    return;
-  }
+  // Solicitar o dia da devolução
+  do {
+    cout << "Digite o dia da devolução (1-31): ";
+    cin >> returnDay;
+    cin.ignore();
+    if (returnDay < 1 || returnDay > 31) {
+      cout << "Dia inválido! Tente novamente." << endl;
+    }
+  } while (returnDay < 1 || returnDay > 31);
 
-  int returnDay = stoi(returnDate.substr(0, 2));
-  int returnMonth = stoi(returnDate.substr(2, 2));
-  int returnYear = stoi(returnDate.substr(4, 4));
-  int actualReturnDate = returnDay + returnMonth * 100 + returnYear * 10000;
+  // Solicitar o mês da devolução
+  do {
+    cout << "Digite o mês da devolução (1-12): ";
+    cin >> returnMonth;
+    cin.ignore();
+    if (returnMonth < 1 || returnMonth > 12) {
+      cout << "Mês inválido! Tente novamente." << endl;
+    }
+  } while (returnMonth < 1 || returnMonth > 12);
+
+  // Solicitar o ano da devolução
+  cout << "Digite o ano da devolução: ";
+  cin >> returnYear;
+  cin.ignore();
+
+  int actualReturnDate = stoi(formatWithLeadingZero(returnDay) + formatWithLeadingZero(returnMonth) + to_string(returnYear));
 
   for (auto i = Library::loans.begin(); i != Library::loans.end(); ++i) {
     if (i->user == userName && i->title == bookTitle) {
 
+      cout << "Data de devolução inserida: " << actualReturnDate << endl;
+      cout << "Data de devolução prevista: " << i->returnDay << endl;
+
       if (actualReturnDate > i->returnDay) {
-        cout << "Aviso: Você está devolvendo este livro após a data de devolução. Por favor, seja pontual na próxima vez." << endl;
+        cout << "Aviso: Você está devolvendo este livro após a data de devolução." << endl;
+        cout << "Por favor, seja pontual na próxima vez." << endl;
       }
 
       Library::loans.erase(i);
@@ -251,6 +308,7 @@ void printUserBooks() {
       break;
     }
   }
+  clear();
 
   if (!foundUser) {
     cout << "Erro: Usuário não encontrado no sistema." << endl;
@@ -269,5 +327,6 @@ void printUserBooks() {
   for (const string& bookTitle : foundUser->booksLoans) {
     cout << "- " << bookTitle << endl;
   }
+  pauseAndClear();
 }
 
