@@ -4,6 +4,7 @@
 #include <iostream> // É utilizado para operações de entrada e saída (cin, cout).
 #include <locale.h> // É Utilizado para a chamada setlocale(LC_ALL, "portuguese"); que configura a localização.
 #include <stdlib.h> // É utilizado para usar o nullprt;
+#include <map>
 
 #include <vector> // É utilizado para manipular a lista vetores.
 #include <string> // É utilizado para manipular strings nos atributos do struct e para as funções de entrada/saída.
@@ -24,6 +25,8 @@ class Library {
   static bool numberExists(int verificationNumber);
   static bool bookExists(const string& title);
   static bool authorExists(const string& author);
+  static string getUserWithMostLoans();
+  static string getMostLoanedBook();
 };
 
 #endif

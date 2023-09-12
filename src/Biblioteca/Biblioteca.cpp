@@ -43,6 +43,52 @@ bool Library::authorExists(const string& author) {
   }
   return false;
 }
+
+string Library::getUserWithMostLoans() {
+  if (users.empty()) {
+    return "Nenhum usuário registrado";
+  }
+
+  string topUser = users[0].name;
+  int maxLoans = users[0].booksLoans.size();
+
+  for (const User& user : users) {
+    if (user.booksLoans.size() > maxLoans) {
+      maxLoans = user.booksLoans.size();
+      topUser = user.name;
+    }
+  }
+
+  return topUser;
+}
+
+string Library::getMostLoanedBook() {
+  if (loans.empty()) {
+    return "Nenhum empréstimo realizado";
+  }
+
+  map<string, int> loanCounts;
+
+  // Conta quantas vezes cada livro foi emprestado
+  for (const Loan& loan : loans) {
+    loanCounts[loan.title]++;
+  }
+
+  // Encontra o livro com a contagem máxima de empréstimos
+  string topBook = loans[0].title;
+  int maxLoans = loanCounts[topBook];
+
+  for (const auto& pair : loanCounts) {
+    if (pair.second > maxLoans) {
+      maxLoans = pair.second;
+      topBook = pair.first;
+    }
+  }
+
+  return topBook;
+}
+
+
 // --------------------------------------------------------------------------------------------
 
 // Função que apresenta as estastísticas ------------------------------------------------------
@@ -53,70 +99,10 @@ void Library::generalStatistics() {
   cout << "Quantidade de cadastro de livros: " << Library::books.size() << endl;
   cout << "Quantidade de cadastro de usuários: " << Library::users.size() << endl;
   cout << "Quantidade de registro de empréstimos: " << Library::loans.size() << endl;
-
-  cout << "Livro mais Popular: " << Library::loans.size() << endl;
-  cout << "Usuário mais Ativo: " << Library::loans.size() << endl;
+  cout << "Livro mais Popular: " << Library::getMostLoanedBook() << endl;
+  cout << "Usuário mais Ativo: " << Library::getUserWithMostLoans() << endl;
 
   printDivider();
   pauseAndClear(8);
 }
 // --------------------------------------------------------------------------------------------
-
-
-
-
-
-
-// void Library::listBooksMain() {
-//   if (books.empty()) {
-//     cout << "Não há livros cadastrados." << endl;
-//   }
-//   else {
-//     cout << "LIVROS CADASTRADOS" << endl;
-//     for (const Book& book : books) {
-//       printDivider();
-//       cout << "Título: " << book.title << endl;
-//       cout << "Autor: " << book.author << endl;
-//       cout << "Ano de Publicação: " << book.publicationYear << endl;
-//       cout << "Número de Cópias: " << book.copyNumbers << endl;
-//     }
-//     printDivider();
-//   }
-//   pauseAndClear();
-// }
-
-// void Library::listUsersMain() {
-//   if (users.empty()) {
-//     cout << "Não há usuários cadastrados." << endl;
-//   }
-//   else {
-//     cout << "USUÁRIOS CADASTRADOS:" << endl;
-//     for (const User& user : users) {
-//       printDivider();
-//       cout << "Nome: " << user.name << endl;
-//       cout << "Número de verificação: " << user.verificationNumber << endl;
-//       cout << "Quantidade de livros emprestados: " << user.numberLoans << endl;
-//     }
-//     printDivider();
-//   }
-//   pauseAndClear();
-// }
-
-// void Library::listLoansMain() {
-//   if (loans.empty()) {
-//     cout << "Não há empréstimos cadastrados." << endl;
-//   }
-//   else {
-//     cout << "EMPRÉSTIMOS CADASTRADOS: " << endl;
-//     for (const Loan& loan : loans) {
-//       printDivider();
-//       cout << "Usuário: " << loan.user << endl;
-//       cout << "Título: " << loan.title << endl;
-//       cout << "Autor: " << loan.author << endl;
-//       cout << "Dia do Empréstimo: " << loan.loanDay << endl;
-//       cout << "Dia da Devolução: " << loan.returnDay << endl;
-//     }
-//     printDivider();
-//     pauseAndClear();
-//   }
-// }
