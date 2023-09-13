@@ -30,9 +30,3 @@ class Library {
 };
 
 #endif
-
-
-
-// static void listBooksMain();
-  // static void listUsersMain();
-  // static void listLoansMain();

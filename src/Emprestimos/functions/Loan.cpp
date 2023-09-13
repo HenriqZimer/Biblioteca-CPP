@@ -32,22 +32,6 @@ Book* findBook(const string& bookTitle) {
   return nullptr;
 }
 
-string formatWithLeadingZero(int value) {
-  if (value < 10) {
-    return "0" + to_string(value);
-  }
-  else {
-    return to_string(value);
-  }
-}
-
-// string formatDate(int dateValue) {
-//   string dateStr = to_string(dateValue);
-//   return "Dia: " + formatWithLeadingZero(stoi(dateStr.substr(0, 2))) +
-//     " Mês: " + formatWithLeadingZero(stoi(dateStr.substr(2, 2))) +
-//     " Ano: " + dateStr.substr(4, 4);
-// }
-
 void printSingleLoan(const Loan& loan) {
   printDivider();
   cout << "Usuário: " << loan.user << endl;
@@ -120,10 +104,11 @@ void registerLoan() {
   cout << "Digite o ano do seu Empréstimo: ";
   cin >> year;
   cin.ignore();
+  printDivider();
   cout << "Você tem 7 dias para devolver seu Empréstimo (clique ENTER para continuar)";
   cin.ignore();
 
-  newLoan.loanDay = stoi(formatWithLeadingZero(day) + formatWithLeadingZero(month) + to_string(year));
+  newLoan.loanDay = year * 10000 + month * 100 + day;
 
   day += 7;
 
@@ -137,7 +122,7 @@ void registerLoan() {
     }
   }
 
-  newLoan.returnDay = stoi(formatWithLeadingZero(day) + formatWithLeadingZero(month) + to_string(year));
+  newLoan.returnDay = year * 10000 + month * 100 + day;
 
   for (User& user : Library::users) {
     if (user.name == newLoan.user) {
@@ -258,17 +243,17 @@ void bookReturn() {
   cin >> returnYear;
   cin.ignore();
 
-  int actualReturnDate = stoi(formatWithLeadingZero(returnDay) + formatWithLeadingZero(returnMonth) + to_string(returnYear));
+  int actualReturnDate = returnYear * 10000 + returnMonth * 100 + returnDay;
 
   for (auto i = Library::loans.begin(); i != Library::loans.end(); ++i) {
     if (i->user == userName && i->title == bookTitle) {
+      int delay = actualReturnDate - i->returnDay;
 
-      cout << "Data de devolução inserida: " << actualReturnDate << endl;
-      cout << "Data de devolução prevista: " << i->returnDay << endl;
-
-      if (actualReturnDate > i->returnDay) {
-        cout << "Aviso: Você está devolvendo este livro após a data de devolução." << endl;
-        cout << "Por favor, seja pontual na próxima vez." << endl;
+      if (delay > 0) {
+        float penalty = 1.99;
+        float amountPayable = penalty * delay;
+        cout << "Aviso: Você está devolvendo este livro " << delay << " dia(s) após a data de devolução." << endl;
+        cout << "Por favor, seja pontual na próxima vez. Valor da Multa: " << amountPayable << endl;
       }
 
       Library::loans.erase(i);
@@ -280,7 +265,7 @@ void bookReturn() {
         }
       }
 
-      clear();
+      pause();
       cout << "Devolução registrada com sucesso!" << endl;
       pauseAndClear();
       return;

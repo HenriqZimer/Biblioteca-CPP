@@ -48,16 +48,3 @@ int main() {
   } while (option != 5);
   return 0;
 }
-
-
-// case 6:
-    //   break;
-    // case 10:
-    //   Library::listBooksMain();
-    //   break;
-    // case 11:
-    //   Library::listUsersMain();
-    //   break;
-    // case 12:
-    //   Library::listLoansMain();
-    //   break;

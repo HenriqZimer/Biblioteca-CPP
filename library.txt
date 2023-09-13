@@ -1,6 +1,0 @@
-- iostream: Você está utilizando para operações de entrada e saída (cin, cout).
-- clocale: Utilizado para a chamada setlocale(LC_ALL, "portuguese"); que configura a localização.
-- vector: Utilizado para manipular a lista (vetor) de livros.
-- string: Utilizado para manipular strings nos atributos do struct e para as funções de entrada/saída.
-- thread: Utilizado para a função this_thread::sleep_for.
-- chrono: Utilizado para especificar a duração do sono na função sleep_for.
